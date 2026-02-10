@@ -63,6 +63,9 @@ importers:
       '@pooxlabs/presets':
         specifier: workspace:*
         version: link:../../packages/presets
+      '@pooxlabs/utility':
+        specifier: workspace:*
+        version: link:../../packages/utility
       jotai:
         specifier: ^2.17.1
         version: 2.17.1(@babel/core@7.29.0)(@babel/template@7.28.6)(@types/react@19.2.13)(react@19.2.4)
