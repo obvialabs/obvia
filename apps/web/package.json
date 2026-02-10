@@ -1,0 +1,56 @@
+{
+  "private"           : true,
+  "name"              : "web",
+  "description"       : "",
+  "keywords"          : [],
+  "license"           : "MIT",
+  "homepage"          : "https://poox.io/",
+  "version"           : "0.0.1",
+
+  "author"            : {
+    "name"  : "Selçuk Çukur",
+    "email" : "selcukcukur@outlook.com.tr",
+    "url"   : "https://selcukcukur.com.tr"
+  },
+
+  "bugs"              : {
+    "email" : "security@poox.io",
+    "url"   : "https://github.com/pooxlabs/poox/issues"
+  },
+
+  "scripts"           : {
+    "build"             : "next build",
+    "clean"             : "rimraf node_modules dist .next .turbo",
+    "dev"               : "next dev --hostname poox.dev --experimental-https --experimental-https-key ./certificates/poox-key.pem --experimental-https-cert ./certificates/poox.pem --turbopack --port 9000",
+    "lint"              : "next lint",
+    "start"             : "next start"
+  },
+
+  "dependencies"      : {
+    "@pooxlabs/presets"         : "workspace:*",
+    "next"                      : "^16.1.6",
+    "react"                     : "19.2.4",
+    "react-dom"                 : "19.2.4",
+    "jotai"                     : "^2.17.1"
+  },
+  "devDependencies"   : {
+    "@types/node"               : "^25.2.1",
+    "@types/react"              : "^19.2.13",
+    "@types/react-dom"          : "^19.2.3",
+    "tsx"                       : "^4.21.0",
+    "typescript"                : "^5.9.3"
+  },
+
+  "publishConfig"     : {
+    "access"  : "public"
+  },
+  "publisher"         : {
+    "type" : "github",
+    "user" : "pooxlabs",
+    "repo" : "poox"
+  },
+  "repository"        : {
+    "type"  : "git",
+    "url"   : "git+https://github.com/pooxlabs/poox.git"
+  }
+}
