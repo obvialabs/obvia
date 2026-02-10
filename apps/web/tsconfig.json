@@ -3,7 +3,17 @@
   "compilerOptions" : {
     "baseUrl" : ".",
     "paths"   : {
-      "@/*"                     : ["*"]
+      "@/*"                     : ["*"],
+
+      "@interface/*"            : ["./interface/*"],
+
+      "@config"                 : ["./config/index.ts"],
+      "@config/*"               : ["./config/*"],
+
+      "@library/*"              : ["./library/*"],
+
+      "@action"                 : ["./library/action/index.ts"],
+      "@action/*"               : ["./library/action/*"]
     },
   },
   "include"         : ["**/*.ts", "**/*.tsx", "**/*.d.ts", "next-env.d.ts", "next.config.ts", ".next/types/**/*.ts"],
