@@ -1,0 +1,67 @@
+{
+  "private"           : true,
+  "name"              : "poox",
+  "description"       : "",
+  "keywords"          : [],
+  "license"           : "MIT",
+  "homepage"          : "https://poox.io/",
+  "version"           : "0.0.0",
+
+  "author"            : {
+    "name"  : "Selçuk Çukur",
+    "email" : "selcukcukur@outlook.com.tr",
+    "url"   : "https://selcukcukur.com.tr"
+  },
+
+  "bugs"              : {
+    "email" : "security@poox.io",
+    "url"   : "https://github.com/pooxlabs/poox/issues"
+  },
+
+  "scripts"           : {
+    "build"         : "turbo build",
+    "dev"           : "turbo dev",
+    "lint"          : "turbo lint",
+    "clean"         : "turbo clean && rimraf node_modules dist .turbo",
+    "test"          : "turbo test"
+  },
+
+  "devDependencies"   : {
+    "@pooxlabs/presets"                 : "workspace:*",
+    "eslint"                            : "^10.0.0",
+    "prettier"                          : "^3.8.1",
+    "prettier-plugin-organize-imports"  : "^4.3.0",
+    "prettier-plugin-tailwindcss"       : "^0.7.2",
+    "turbo"                             : "^2.8.3",
+    "typescript"                        : "^5.9.3",
+    "rimraf"                            : "^6.1.2"
+  },
+  "peerDependencies"  : {
+    "next"                              : "^16.1.6",
+    "react"                             : "^19.2.4",
+    "react-dom"                         : "^19.2.4",
+    "@types/react"                      : "^19.2.13",
+    "@types/react-dom"                  : "^19.2.3",
+    "typescript"                        : "^5.9.3"
+  },
+
+  "pnpm"              : {
+    "auto-install-peers"          : true,
+    "link-workspace-packages"     : true,
+    "ignore-workspace-root-check" : true,
+    "overrides"                   : {
+      "next"                            : "^16.1.6",
+      "react"                           : "^19.2.4",
+      "react-dom"                       : "^19.2.4",
+      "@types/react"                    : "^19.2.13",
+      "@types/react-dom"                : "^19.2.3",
+      "typescript"                      : "^5.9.3",
+      "baseline-browser-mapping"        : "^2.9.19"
+    },
+    "onlyBuiltDependencies"       : []
+  },
+  "packageManager"    : "pnpm@10.29.1",
+  "engines"           : {
+    "node"  : ">=24"
+  }
+}
