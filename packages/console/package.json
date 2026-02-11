@@ -19,9 +19,14 @@
   },
 
   "scripts"           : {
+    "dev"   : "tsup --watch",
+    "build" : "tsup",
+    "start" : "node dist/poox.mjs",
+    "sync"  : "pnpm build && pnpm start",
     "clean" : "rimraf node_modules dist .turbo"
   },
 
+  "bin"               : "./dist/poox.js",
   "main"              : "./dist/index.mjs",
   "module"            : "./dist/index.mjs",
   "types"             : "./dist/index.d.ts",
@@ -38,6 +43,7 @@
   "devDependencies"   : {
     "@types/node"               : "^25.2.1",
     "@types/react"              : "^19.2.13",
+    "@types/prompts"            : "^2.4.9",
     "next"                      : "^16.1.6",
     "react"                     : "^19.2.4",
     "react-dom"                 : "^19.2.4",
@@ -51,7 +57,10 @@
   },
 
   "exports"           : {
-    "."   : "./src/index.ts"
+    "."          : {
+      "types"   : "./dist/index.d.ts",
+      "default" : "./dist/index.js"
+    }
   },
 
   "publishConfig"     : {

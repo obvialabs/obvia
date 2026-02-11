@@ -1,5 +1,8 @@
 import { Command } from "commander"
 
+import prompts from "prompts"
+import kleur from "kleur";
+
 /**
  * Register the `create:package` command
  *
@@ -58,8 +61,103 @@ createPackage.option("--bugs <bugs>", "the bugs of your package")
 
 // Action
 createPackage.action(async (name, options) => {
+  const questions: prompts.PromptObject[] = []
 
+  if (! options.description) {
+    questions.push({
+      type    : "text",
+      name    : "description",
+      message : "Package description"
+    })
+  }
+
+  if (!options.keywords) {
+    questions.push({
+      type    : "text",
+      name    : "keywords",
+      message : "Package keywords"
+    })
+  }
+
+  if (!options.license) {
+    questions.push({
+      type    : "text",
+      name    : "license",
+      message : "Package license",
+      initial : "MIT"
+    })
+  }
+
+  if (!options.homepage) {
+    questions.push({
+      type    : "text",
+      name    : "homepage",
+      message : "Package homepage"
+    })
+  }
+
+  if (!options.version) {
+    questions.push({
+      type    : "text",
+      name    : "version",
+      message : "Package version",
+      initial : "0.0.1"
+    })
+  }
+
+  if (!options.author) {
+    questions.push({
+      type    : "text",
+      name    : "author",
+      message : "Package author"
+    })
+  }
+
+  if (!options.bugs) {
+    questions.push({
+      type    : "text",
+      name    : "bugs",
+      message : "Bugs (email or URL)"
+    })
+  }
+
+  const answers = questions.length > 0 ? await prompts(questions) : {}
+
+  const finalConfig = {
+    name,
+    description: options.description || answers.description,
+    keywords: options.keywords || answers.keywords,
+    license: options.license || answers.license,
+    homepage: options.homepage || answers.homepage,
+    version: options.version || answers.version,
+    author: options.author || answers.author,
+    bugs: options.bugs || answers.bugs,
+  }
+
+  printDetails(finalConfig)
 })
+
+function printDetails(config: Record<string, string | undefined>) {
+  const entries = [
+    ["Name", config.name],
+    ["Description", config.description],
+    ["Keywords", config.keywords],
+    ["License", config.license],
+    ["Homepage", config.homepage],
+    ["Version", config.version],
+    ["Author", config.author],
+    ["Bugs", config.bugs],
+  ]
+
+  const totalWidth = 120 // artisan tarzı satır genişliği
+  for (const [key, value] of entries) {
+    const left = `${key} `
+    const right = value || "—"
+    const dotsCount = Math.max(2, totalWidth - left.length - right.length - 1)
+    const dots = ".".repeat(dotsCount)
+    console.log(`${kleur.bold().yellow(left)}${kleur.dim(dots)} ${kleur.white(right)}`)
+  }
+}
 
 export {
   createPackage
