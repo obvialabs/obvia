@@ -4,8 +4,11 @@ import prompts from "prompts"
 
 import {
   parsePackageName,
+  parsePackageVersion,
+  parseHomepage,
+
   loadConfig,
-  type PooxConfig, parsePackageVersion
+  type PooxConfig, parseAuthor,
 } from "@/utility"
 
 /**
@@ -26,28 +29,28 @@ import {
  * **Usage**
  * ```bash
  * # Basic
- * poox create:package @poox/package
+ * poox create:package example
  *
- * # With description
- * poox create:package @poox/package --description "Multi-framework development ecosystem"
+ * # Description
+ * poox create:package example --description "Multi-framework development ecosystem"
  *
- * # With keywords
- * poox create:package @poox/package --keywords "ui,components,poox"
+ * # Keywords
+ * poox create:package example --keywords "ui,components,poox"
  *
- * # With license
- * poox create:package @poox/package --license MIT
+ * # License
+ * poox create:package example --license "MIT"
  *
- * # With homepage
- * poox create:package @poox/package --homepage "https://poox.io"
+ * # Homepage
+ * poox create:package example --homepage "https://poox.io"
  *
- * # With version
- * poox create:package @poox/package --version 1.2.0
+ * # Version
+ * poox create:package example --version "1.2.0"
  *
- * # With author
- * poox create:package @poox/package --author "Selçuk Çukur <selcukcukur@outlook.com.tr> (https://selcukcukur.com.tr)"
+ * # Author
+ * poox create:package example --author "Selçuk Çukur <c.selcuk@poox.io> (https://poox.io)"
  *
- * # With bugs e-mail and URL
- * poox create:package @poox/package --bugs "selcukcukur@outlook.com.tr (https://github.com/pooxlabs/package/issues)"
+ * # Bugs
+ * poox create:package example --bugs "c.selcuk@poox.io (https://github.com/pooxlabs/example)"
  * ```
  */
 const createPackage = new Command()
@@ -69,7 +72,7 @@ createPackage.action(async (name, options) => {
   const questions: prompts.PromptObject[] = []
   const config: PooxConfig = await loadConfig()
 
-  if (!options.description) {
+  if (! options.description) {
     questions.push({
       type    : "text",
       name    : "description",
@@ -78,7 +81,7 @@ createPackage.action(async (name, options) => {
     })
   }
 
-  if (!options.keywords) {
+  if (! options.keywords) {
     questions.push({
       type    : "text",
       name    : "keywords",
@@ -87,7 +90,7 @@ createPackage.action(async (name, options) => {
     })
   }
 
-  if (!options.license) {
+  if (! options.license) {
     questions.push({
       type    : "text",
       name    : "license",
@@ -96,7 +99,7 @@ createPackage.action(async (name, options) => {
     })
   }
 
-  if (!options.homepage) {
+  if (! options.homepage) {
     questions.push({
       type    : "text",
       name    : "homepage",
@@ -105,7 +108,7 @@ createPackage.action(async (name, options) => {
     })
   }
 
-  if (!options.version) {
+  if (! options.version) {
     questions.push({
       type    : "text",
       name    : "version",
@@ -114,7 +117,7 @@ createPackage.action(async (name, options) => {
     })
   }
 
-  if (!options.author) {
+  if (! options.author) {
     questions.push({
       type    : "text",
       name    : "author",
@@ -125,7 +128,7 @@ createPackage.action(async (name, options) => {
     })
   }
 
-  if (!options.bugs) {
+  if (! options.bugs) {
     questions.push({
       type    : "text",
       name    : "bugs",
@@ -143,12 +146,13 @@ createPackage.action(async (name, options) => {
     description : options.description || answers.description,
     keywords    : options.keywords || answers.keywords,
     license     : options.license || answers.license,
-    homepage    : options.homepage || answers.homepage,
+    homepage    : parseHomepage(options.homepage || answers.homepage),
     version     : parsePackageVersion(options.version || answers.version),
-    author      : options.author || answers.author,
+    author      : parseAuthor(options.author || answers.author),
     bugs        : options.bugs || answers.bugs,
   }
 
+  console.log(JSON.stringify(result, null, 2))
 })
 
 export {
