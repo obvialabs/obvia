@@ -1,18 +1,16 @@
-import { copyFileSync } from "fs"
 import { defineConfig, type Options } from "tsup"
 
 export default defineConfig((options: Options) => ({
   clean     : true,
   dts       : true,
-  entry     : ["src/**/*.ts"],
+  entry     : [
+    "src/index.ts",
+    "src/poox.ts"
+  ],
   format    : ["esm"],
   sourcemap : true,
-  minify    : true,
   target    : "ESNext",
-  outDir    : "dist",
+  minify    : true,
   treeshake : true,
-  ...options,
-  onSuccess: async () => {
-    copyFileSync("src/tailwind.css", "dist/tailwind.css")
-  },
+  ...options
 }))
