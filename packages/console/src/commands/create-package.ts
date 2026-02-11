@@ -1,12 +1,11 @@
 import { Command } from "commander"
 
 import prompts from "prompts"
-import kleur from "kleur"
 
 import {
   parsePackageName,
   loadConfig,
-  type PooxConfig
+  type PooxConfig, parsePackageVersion
 } from "@/utility"
 
 /**
@@ -69,9 +68,6 @@ createPackage.option("--bugs <bugs>", "the bugs of your package")
 createPackage.action(async (name, options) => {
   const questions: prompts.PromptObject[] = []
   const config: PooxConfig = await loadConfig()
-
-  // Use helper to safely build the package name
-  const packageName = parsePackageName(name, config?.package?.name)
 
   if (!options.description) {
     questions.push({
@@ -142,21 +138,15 @@ createPackage.action(async (name, options) => {
 
   const answers = questions.length > 0 ? await prompts(questions) : {}
 
-  // CLI’den gelen + prompt cevapları
-  const cliConfig = {
-    name        : packageName,
+  const result = {
+    name        : parsePackageName(name, config?.package?.name),
     description : options.description || answers.description,
     keywords    : options.keywords || answers.keywords,
     license     : options.license || answers.license,
     homepage    : options.homepage || answers.homepage,
-    version     : options.version || answers.version,
+    version     : parsePackageVersion(options.version || answers.version),
     author      : options.author || answers.author,
     bugs        : options.bugs || answers.bugs,
-  }
-
-  const finalConfig = {
-    ...config.package,
-    ...cliConfig,
   }
 
 })
