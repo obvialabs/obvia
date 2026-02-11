@@ -5,7 +5,8 @@
     "module"  : "ESNext",
     "moduleResolution": "bundler",
     "paths"   : {
-      "@pooxlabs/console" : ["src"]
+      "@poox/*"             : ["src/*"],
+      "@pooxlabs/console"   : ["src"],
     }
   },
   "include"         : ["."],
