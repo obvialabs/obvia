@@ -1,4 +1,5 @@
 import { Command } from "commander"
+
 import kleur from "kleur"
 
 function header(program: Command) {

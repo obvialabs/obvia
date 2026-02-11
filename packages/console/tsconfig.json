@@ -2,6 +2,8 @@
   "extends"         : "@pooxlabs/presets/react-config",
   "compilerOptions" : {
     "baseUrl" : ".",
+    "module"  : "ESNext",
+    "moduleResolution": "bundler",
     "paths"   : {
       "@pooxlabs/console" : ["src"]
     }

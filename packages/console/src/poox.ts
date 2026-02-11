@@ -2,7 +2,6 @@
 import { Command } from "commander"
 
 import {
-  createApp,
   createPackage
 } from "@pooxlabs/console"
 
@@ -24,7 +23,6 @@ async function main() {
     .option("--tailwind", "include tailwind css setup")
     .option("--docker", "generate docker configuration for the project")
 
-  poox.addCommand(createApp)
   poox.addCommand(createPackage)
 
   poox.configureHelp({

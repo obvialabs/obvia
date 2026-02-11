@@ -3,6 +3,8 @@ import { Command } from "commander"
 import prompts from "prompts"
 import kleur from "kleur";
 
+import { loadConfig, type PooxConfig } from "../utility"
+
 /**
  * Register the `create:package` command
  *
@@ -62,68 +64,64 @@ createPackage.option("--bugs <bugs>", "the bugs of your package")
 // Action
 createPackage.action(async (name, options) => {
   const questions: prompts.PromptObject[] = []
+  const config: PooxConfig = await loadConfig()
 
-  if (! options.description) {
+  if (!options.description) {
     questions.push({
-      type    : "text",
-      name    : "description",
-      message : "Package description"
+      type: "text",
+      name: "description",
+      message: "Package description",
+      initial: config?.package?.description || ""
     })
   }
-
   if (!options.keywords) {
     questions.push({
-      type    : "text",
-      name    : "keywords",
-      message : "Package keywords"
+      type: "text",
+      name: "keywords",
+      message: "Package keywords",
+      initial: config?.package?.keywords || ""
     })
   }
-
   if (!options.license) {
     questions.push({
-      type    : "text",
-      name    : "license",
-      message : "Package license",
-      initial : "MIT"
+      type: "text",
+      name: "license",
+      message: "Package license",
+      initial: config?.package?.license || "MIT"
     })
   }
-
   if (!options.homepage) {
     questions.push({
-      type    : "text",
-      name    : "homepage",
-      message : "Package homepage"
+      type: "text",
+      name: "homepage",
+      message: "Package homepage",
+      initial: config?.package?.homepage || ""
     })
   }
-
   if (!options.version) {
     questions.push({
-      type    : "text",
-      name    : "version",
-      message : "Package version",
-      initial : "0.0.1"
+      type: "text",
+      name: "version",
+      message: "Package version",
+      initial: config?.package?.version || "0.0.1"
     })
   }
-
   if (!options.author) {
     questions.push({
       type    : "text",
       name    : "author",
-      message : "Package author"
+      message : "Package author" ,
+      initial : `${config?.package?.author.name} <${config?.package?.author.email}> (${config?.package?.author.url})`
     })
   }
-
   if (!options.bugs) {
-    questions.push({
-      type    : "text",
-      name    : "bugs",
-      message : "Bugs (email or URL)"
-    })
+    questions.push({ type: "text", name: "bugs", message: "Bugs (email or URL)" })
   }
 
   const answers = questions.length > 0 ? await prompts(questions) : {}
 
-  const finalConfig = {
+  // CLI’den gelen + prompt cevapları
+  const cliConfig = {
     name,
     description: options.description || answers.description,
     keywords: options.keywords || answers.keywords,
@@ -132,6 +130,11 @@ createPackage.action(async (name, options) => {
     version: options.version || answers.version,
     author: options.author || answers.author,
     bugs: options.bugs || answers.bugs,
+  }
+
+  const finalConfig = {
+    ...config.package,
+    ...cliConfig,
   }
 
   printDetails(finalConfig)

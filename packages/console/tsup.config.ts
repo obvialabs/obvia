@@ -9,6 +9,7 @@ export default defineConfig((options: Options) => ({
   ],
   format    : ["esm"],
   sourcemap : true,
+  target    : "ESNext",
   minify    : true,
   treeshake : true,
   ...options
