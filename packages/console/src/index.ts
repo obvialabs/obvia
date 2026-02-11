@@ -1,8 +1,8 @@
 // Commands
-export { createPackage } from "./commands/create-package"
+export { createPackage } from "@/commands/create-package"
 
 // Utility
-export { pooxSupport } from "./commands/utility/support"
+export { pooxSupport } from "@/commands/utility/support"
 
 // Config
-export { defineConfig, type PooxConfig } from "./utility"
+export { defineConfig, type PooxConfig } from "@/utility"

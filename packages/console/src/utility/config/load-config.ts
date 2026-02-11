@@ -1,7 +1,8 @@
 import fs from "fs"
 import path from "path"
 import { pathToFileURL } from "url"
-import {PooxConfig} from "./define-config";
+
+import type { PooxConfig } from "@poox/utility"
 
 const CONFIG_FILES = ["poox.config.ts", "poox.config.js", "poox.config.mjs"]
 

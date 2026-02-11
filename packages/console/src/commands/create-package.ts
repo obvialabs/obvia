@@ -3,7 +3,11 @@ import { Command } from "commander"
 import prompts from "prompts"
 import kleur from "kleur";
 
-import { loadConfig, type PooxConfig } from "../utility"
+import {
+  parsePackageName,
+  loadConfig,
+  type PooxConfig
+} from "@/utility"
 
 /**
  * Register the `create:package` command
@@ -178,29 +182,6 @@ function printDetails(config: Record<string, string | undefined>) {
     const dots = ".".repeat(dotsCount)
     console.log(`${kleur.bold().yellow(left)}${kleur.dim(dots)} ${kleur.white(right)}`)
   }
-}
-
-function parsePackageName(raw: string, prefix?: string): string {
-  // Trim whitespace from the beginning and end of the raw input
-  const trimmed = raw.trim()
-
-  // If a prefix is defined
-  if (prefix && prefix.length > 0) {
-    const safe = trimmed
-      // Convert the name to lowercase
-      .toLowerCase()
-      // Remove any characters that are not letters, numbers, hyphen, or underscore
-      // (slashes are removed because prefix already provides the scope separator)
-      .replace(/[^a-z0-9-_]/g, "")
-
-    // Return the final package name with prefix applied
-    return `${prefix}/${safe}`
-  }
-
-  // If no prefix is defined:
-  // - Keep the user-provided name as-is (except trimming and lowercasing)
-  // - Slashes are preserved so users can manually provide scoped names
-  return trimmed.toLowerCase()
 }
 
 export {

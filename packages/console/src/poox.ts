@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 import { Command } from "commander"
 
-import {
-  createPackage
-} from "@pooxlabs/console"
+// Commands
+import { createPackage } from "@/commands/create-package"
 
-import { pooxSupport } from "@pooxlabs/console"
+// Utility
+import { pooxSupport } from "@/commands/utility/support"
 
 // Handle termination signals gracefully
 process.on("SIGINT", () => process.exit(0))
