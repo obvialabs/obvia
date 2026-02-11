@@ -1,0 +1,11 @@
+{
+  "extends"         : "@pooxlabs/presets/react-config",
+  "compilerOptions" : {
+    "baseUrl" : ".",
+    "paths"   : {
+      "@pooxlabs/console" : ["src"]
+    }
+  },
+  "include"         : ["."],
+  "exclude"         : ["dist", "build", "node_modules"]
+}
