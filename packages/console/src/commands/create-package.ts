@@ -68,54 +68,69 @@ createPackage.action(async (name, options) => {
 
   if (!options.description) {
     questions.push({
-      type: "text",
-      name: "description",
-      message: "Package description",
-      initial: config?.package?.description || ""
+      type    : "text",
+      name    : "description",
+      message : "Package description",
+      initial : config?.package?.description || ""
     })
   }
+
   if (!options.keywords) {
     questions.push({
-      type: "text",
-      name: "keywords",
-      message: "Package keywords",
-      initial: config?.package?.keywords || ""
+      type    : "text",
+      name    : "keywords",
+      message : "Package keywords",
+      initial : config?.package?.keywords || ""
     })
   }
+
   if (!options.license) {
     questions.push({
-      type: "text",
-      name: "license",
-      message: "Package license",
-      initial: config?.package?.license || "MIT"
+      type    : "text",
+      name    : "license",
+      message : "Package license",
+      initial : config?.package?.license || "MIT"
     })
   }
+
   if (!options.homepage) {
     questions.push({
-      type: "text",
-      name: "homepage",
-      message: "Package homepage",
-      initial: config?.package?.homepage || ""
+      type    : "text",
+      name    : "homepage",
+      message : "Package homepage",
+      initial : config?.package?.homepage || ""
     })
   }
+
   if (!options.version) {
     questions.push({
-      type: "text",
-      name: "version",
-      message: "Package version",
-      initial: config?.package?.version || "0.0.1"
+      type    : "text",
+      name    : "version",
+      message : "Package version",
+      initial : config?.package?.version || "0.0.1"
     })
   }
+
   if (!options.author) {
     questions.push({
       type    : "text",
       name    : "author",
-      message : "Package author" ,
-      initial : `${config?.package?.author.name} <${config?.package?.author.email}> (${config?.package?.author.url})`
+      message : "Package author",
+      initial : config?.package?.author?.name && config?.package?.author?.email
+        ? `${config.package.author.name} <${config.package.author.email}>${config.package.author.url ? ` (${config.package.author.url})` : ""}`
+        : ""
     })
   }
+
   if (!options.bugs) {
-    questions.push({ type: "text", name: "bugs", message: "Bugs (email or URL)" })
+    questions.push({
+      type    : "text",
+      name    : "bugs",
+      message : "Bugs (email or URL)",
+      initial : config?.package?.bugs?.email || config?.package?.bugs?.url
+        ? `${config.package.bugs.email ?? ""}${config.package.bugs.url ? ` (${config.package.bugs.url})` : ""}`
+        : ""
+    })
   }
 
   const answers = questions.length > 0 ? await prompts(questions) : {}

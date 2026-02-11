@@ -1,14 +1,9 @@
-/**
- * Poox CLI configuration interface
- *
- * This type describes the shape of the configuration object
- * that can be exported from `poox.config.ts`, `poox.config.js`,
- * or `poox.config.mjs`.
- *
- * All fields are optional, so you can provide only what you need.
- */
 export interface PooxConfig {
   package?: {
+    /**
+     * Package name prefix (e.g., "@poox/*")
+     */
+    name?: string
 
     /**
      * Author information for the package
@@ -21,12 +16,6 @@ export interface PooxConfig {
       /** Author's personal or project URL */
       url?: string
     }
-
-
-    /**
-     * Package name (e.g., "@poox/labs")
-     */
-    name?: string
 
     /**
      * Project description
@@ -56,7 +45,10 @@ export interface PooxConfig {
     /**
      * Issue tracker or bugs URL/email
      */
-    bugs?: string
+    bugs?: {
+      email?: string
+      url?: string
+    }
   }
 }
 
