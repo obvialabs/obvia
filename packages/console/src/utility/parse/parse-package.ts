@@ -21,7 +21,7 @@ export function parsePackageName(raw: string, prefix?: string): string {
   return trimmed.toLowerCase()
 }
 
-export function parsePackageVersion(raw: string, defaultVersion = "0.0.1"): string {
+export function parsePackageVersion(raw: string, fallback = "0.0.1"): string {
   // Trim whitespace from the beginning and end of the raw input
   const trimmed = raw.trim()
 
@@ -34,5 +34,49 @@ export function parsePackageVersion(raw: string, defaultVersion = "0.0.1"): stri
   }
 
   // If not valid, fall back to default version
-  return defaultVersion
+  return fallback
+}
+
+export function parseHomepage(raw: string, fallback = "https://example.com"): string {
+  // Trim whitespace from the beginning and end of the raw input
+  const trimmed = raw.trim()
+
+  // Basic regex for valid URL (http/https)
+  const urlRegex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+
+  // If the input matches URL pattern, return it
+  if (urlRegex.test(trimmed)) {
+    return trimmed
+  }
+
+  // If not valid, fall back to default homepage
+  return fallback
+}
+
+interface Author {
+  name: string
+  email?: string
+  url?: string
+}
+
+export function parseAuthor(raw: string, fallback: Author = { name: "Unknown Author" }): Author {
+  // Trim whitespace
+  const trimmed = raw.trim()
+
+  // Regex: Name <email> (url)
+  const authorRegex = /^(.+?)(?:\s*<([^<>]+)>)?(?:\s*\((https?:\/\/[^\s)]+)\))?$/
+
+  const match = trimmed.match(authorRegex)
+
+  if (match) {
+    const [, name, email, url] = match
+    return {
+      name: name.trim(),                // sadece isim
+      email: email ? email.trim() : undefined, // e-posta varsa
+      url: url ? url.trim() : undefined       // url varsa
+    }
+  }
+
+  // Fallback
+  return fallback
 }
