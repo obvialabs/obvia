@@ -66,6 +66,9 @@ createPackage.action(async (name, options) => {
   const questions: prompts.PromptObject[] = []
   const config: PooxConfig = await loadConfig()
 
+  // Use helper to safely build the package name
+  const packageName = parsePackageName(name, config?.package?.name)
+
   if (!options.description) {
     questions.push({
       type    : "text",
@@ -137,14 +140,14 @@ createPackage.action(async (name, options) => {
 
   // CLI’den gelen + prompt cevapları
   const cliConfig = {
-    name,
-    description: options.description || answers.description,
-    keywords: options.keywords || answers.keywords,
-    license: options.license || answers.license,
-    homepage: options.homepage || answers.homepage,
-    version: options.version || answers.version,
-    author: options.author || answers.author,
-    bugs: options.bugs || answers.bugs,
+    name        : packageName,
+    description : options.description || answers.description,
+    keywords    : options.keywords || answers.keywords,
+    license     : options.license || answers.license,
+    homepage    : options.homepage || answers.homepage,
+    version     : options.version || answers.version,
+    author      : options.author || answers.author,
+    bugs        : options.bugs || answers.bugs,
   }
 
   const finalConfig = {
@@ -175,6 +178,29 @@ function printDetails(config: Record<string, string | undefined>) {
     const dots = ".".repeat(dotsCount)
     console.log(`${kleur.bold().yellow(left)}${kleur.dim(dots)} ${kleur.white(right)}`)
   }
+}
+
+function parsePackageName(raw: string, prefix?: string): string {
+  // Trim whitespace from the beginning and end of the raw input
+  const trimmed = raw.trim()
+
+  // If a prefix is defined
+  if (prefix && prefix.length > 0) {
+    const safe = trimmed
+      // Convert the name to lowercase
+      .toLowerCase()
+      // Remove any characters that are not letters, numbers, hyphen, or underscore
+      // (slashes are removed because prefix already provides the scope separator)
+      .replace(/[^a-z0-9-_]/g, "")
+
+    // Return the final package name with prefix applied
+    return `${prefix}/${safe}`
+  }
+
+  // If no prefix is defined:
+  // - Keep the user-provided name as-is (except trimming and lowercasing)
+  // - Slashes are preserved so users can manually provide scoped names
+  return trimmed.toLowerCase()
 }
 
 export {
