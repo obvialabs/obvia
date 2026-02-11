@@ -1,7 +1,7 @@
 import { Command } from "commander"
 
 import prompts from "prompts"
-import kleur from "kleur";
+import kleur from "kleur"
 
 import {
   parsePackageName,
@@ -159,30 +159,7 @@ createPackage.action(async (name, options) => {
     ...cliConfig,
   }
 
-  printDetails(finalConfig)
 })
-
-function printDetails(config: Record<string, string | undefined>) {
-  const entries = [
-    ["Name", config.name],
-    ["Description", config.description],
-    ["Keywords", config.keywords],
-    ["License", config.license],
-    ["Homepage", config.homepage],
-    ["Version", config.version],
-    ["Author", config.author],
-    ["Bugs", config.bugs],
-  ]
-
-  const totalWidth = 120 // artisan tarzı satır genişliği
-  for (const [key, value] of entries) {
-    const left = `${key} `
-    const right = value || "—"
-    const dotsCount = Math.max(2, totalWidth - left.length - right.length - 1)
-    const dots = ".".repeat(dotsCount)
-    console.log(`${kleur.bold().yellow(left)}${kleur.dim(dots)} ${kleur.white(right)}`)
-  }
-}
 
 export {
   createPackage
