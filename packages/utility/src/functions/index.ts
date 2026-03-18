@@ -1,3 +1,5 @@
+// Creator
+export { createMetadata } from "./creator/create-metadata"
 
 // Logging
 export { proxyLog } from "./formatter/logging/proxy-log"
