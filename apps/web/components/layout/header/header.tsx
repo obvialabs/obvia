@@ -38,12 +38,32 @@ export function Header({ sidebarToggle }: SiteHeaderProps) {
           <Navigation>
             <NavigationList>
               <NavigationItem>
-                <NavigationTrigger className="text-xs text-foreground/60 transition-colors hover:text-foreground bg-transparent h-8 shadow-none">
-                  Ecosystem
+                <NavigationTrigger className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 py-0 px-2.5 cursor-pointer">
+                  Products
                 </NavigationTrigger>
 
                 <ProductsContent />
               </NavigationItem>
+
+              <NavigationItem>
+                <NavigationTrigger className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 py-0 px-2.5 cursor-pointer">
+                  Resources
+                </NavigationTrigger>
+
+                <ProductsContent />
+              </NavigationItem>
+
+              <NavigationLink className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 cursor-pointer px-2.5">
+                Enterprise
+              </NavigationLink>
+
+              <NavigationLink className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 cursor-pointer px-2.5">
+                Customers
+              </NavigationLink>
+
+              <NavigationLink className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 cursor-pointer px-2.5">
+                Pricing
+              </NavigationLink>
             </NavigationList>
           </Navigation>
 

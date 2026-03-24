@@ -30,26 +30,26 @@ export function ProductsContent() {
         <div className="flex flex-1 flex-col gap-3">
           <span className="text-foreground/40 text-xs tracking-wider uppercase">Interface</span>
 
-          <a target="_self" className="flex cursor-pointer flex-row items-center py-2 text-fg0 transition-all duration-200 ease-out hover:text-lk-500" href="/products/agent-builder">
+          <a target="_self" className="flex cursor-pointer flex-row items-center py-2 text-fg0 transition-all duration-200 ease-out hover:text-lk-500" href="/primitives">
             <div className="group flex flex-col gap-0.5">
               <span className="text-foreground/60 group-hover:text-accent-foreground text-sm transition-colors"><b>Obvia</b> Primitives</span>
               <span className="text-foreground/40 text-xs leading-normal">Essential building blocks for interface design</span>
             </div>
           </a>
 
-          <a target="_self" className="flex cursor-pointer flex-row items-center py-2 text-fg0 transition-all duration-200 ease-out hover:text-lk-500" href="/products/agent-builder">
+          <a target="_self" className="flex cursor-pointer flex-row items-center py-2 text-fg0 transition-all duration-200 ease-out hover:text-lk-500" href="/components">
             <div className="group flex flex-col gap-0.5">
               <span className="text-foreground/60 group-hover:text-accent-foreground text-sm transition-colors"><b>Obvia</b> Components</span>
               <span className="text-foreground/40 text-xs leading-normal">Reusable components for modern interfaces</span></div>
           </a>
 
-          <a target="_self" className="flex cursor-pointer flex-row items-center py-2 text-fg0 transition-all duration-200 ease-out hover:text-lk-500" href="/products/agent-builder">
+          <a target="_self" className="flex cursor-pointer flex-row items-center py-2 text-fg0 transition-all duration-200 ease-out hover:text-lk-500" href="/blocks">
             <div className="group flex flex-col gap-0.5">
               <span className="text-foreground/60 group-hover:text-accent-foreground text-sm transition-colors"><b>Obvia</b> Blocks</span>
               <span className="text-foreground/40 text-xs leading-normal">Structured layouts for rapid prototyping</span></div>
           </a>
 
-          <a target="_self" className="flex cursor-pointer flex-row items-center py-2 text-fg0 transition-all duration-200 ease-out hover:text-lk-500" href="/products/agent-builder">
+          <a target="_self" className="flex cursor-pointer flex-row items-center py-2 text-fg0 transition-all duration-200 ease-out hover:text-lk-500" href="/templates">
             <div className="group flex flex-col gap-0.5">
               <span className="text-foreground/60 group-hover:text-accent-foreground text-sm transition-colors"><b>Obvia</b> Templates</span>
               <span className="text-foreground/40 text-xs leading-normal">Premium website and dashboard templates</span></div>
