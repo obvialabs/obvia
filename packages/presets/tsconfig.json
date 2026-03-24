@@ -1,9 +1,9 @@
 {
-  "extends"         : "@pooxlabs/presets/react-config",
+  "extends"         : "@obvia/presets/react-config",
   "compilerOptions" : {
     "baseUrl"   : ".",
     "paths"     : {
-      "@pooxlabs/presets" : ["src"]
+      "@obvia/presets" : ["src"]
     }
   },
   "include"         : ["."],

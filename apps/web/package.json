@@ -1,57 +1,45 @@
 {
-  "private"           : true,
-  "name"              : "web",
-  "description"       : "",
-  "keywords"          : [],
-  "license"           : "MIT",
-  "homepage"          : "https://poox.io/",
-  "version"           : "0.0.1",
-
-  "author"            : {
-    "name"  : "Selçuk Çukur",
-    "email" : "selcukcukur@outlook.com.tr",
-    "url"   : "https://selcukcukur.com.tr"
+  "name": "web",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "typecheck": "tsc --noEmit"
   },
-
-  "bugs"              : {
-    "email" : "security@poox.io",
-    "url"   : "https://github.com/pooxlabs/poox/issues"
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/react-fontawesome": "^3.2.0",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "@vercel/analytics": "^1.6.1",
+    "@vercel/speed-insights": "^1.3.1",
+    "@workspace/ui": "workspace:*",
+    "cmdk": "^1.1.1",
+    "framer-motion": "^12.23.26",
+    "lenis": "^1.3.17",
+    "lucide-react": "^0.475.0",
+    "next": "16.0.10",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "shiki": "^3.20.0",
+    "three": "^0.182.0",
+    "vaul": "^1.1.2",
+    "zustand": "^5.0.11"
   },
-
-  "scripts"           : {
-    "build"             : "next build",
-    "clean"             : "rimraf node_modules dist .next .turbo",
-    "dev"               : "next dev --hostname poox.dev --experimental-https --experimental-https-key ./certificate/poox-key.pem --experimental-https-cert ./certificate/poox.pem --turbopack --port 9000",
-    "lint"              : "next lint",
-    "start"             : "next start"
-  },
-
-  "dependencies"      : {
-    "@pooxlabs/presets"         : "workspace:*",
-    "@pooxlabs/utility"         : "workspace:*",
-    "next"                      : "^16.1.6",
-    "react"                     : "19.2.4",
-    "react-dom"                 : "19.2.4",
-    "jotai"                     : "^2.17.1"
-  },
-  "devDependencies"   : {
-    "@types/node"               : "^25.2.1",
-    "@types/react"              : "^19.2.13",
-    "@types/react-dom"          : "^19.2.3",
-    "tsx"                       : "^4.21.0",
-    "typescript"                : "^5.9.3"
-  },
-
-  "publishConfig"     : {
-    "access"  : "public"
-  },
-  "publisher"         : {
-    "type" : "github",
-    "user" : "pooxlabs",
-    "repo" : "poox"
-  },
-  "repository"        : {
-    "type"  : "git",
-    "url"   : "git+https://github.com/pooxlabs/poox.git"
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/node": "^20.19.25",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.182.0",
+    "@obvia/presets": "workspace:*",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3"
   }
 }

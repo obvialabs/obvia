@@ -1,5 +1,0 @@
-export { ApiProxy } from "@library/proxy/api"
-export { BlogProxy } from "@library/proxy/blog"
-export { StudioProxy } from "@library/proxy/studio"
-export { UiProxy } from "@library/proxy/ui"
-export { WebProxy } from "@library/proxy/web"

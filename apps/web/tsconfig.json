@@ -1,21 +1,23 @@
 {
-  "extends"         : "@pooxlabs/presets/next-config",
+  "extends"         : "@obvia/presets/next-config",
   "compilerOptions" : {
-    "baseUrl" : ".",
-    "paths"   : {
-      "@/*"                     : ["*"],
-
-      "@interface/*"            : ["./interface/*"],
-
-      "@config"                 : ["./config/index.ts"],
-      "@config/*"               : ["./config/*"],
-
-      "@library/*"              : ["./library/*"],
-
-      "@action"                 : ["./library/action/index.ts"],
-      "@action/*"               : ["./library/action/*"]
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@workspace/ui/*": ["../../packages/ui/src/*"]
     },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include"         : ["**/*.ts", "**/*.tsx", "**/*.d.ts", "next-env.d.ts", "next.config.ts", ".next/types/**/*.ts"],
-  "exclude"         : ["dist", "build", "node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "next.config.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }

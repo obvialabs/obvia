@@ -1,0 +1,415 @@
+"use client"
+
+import * as React from "react"
+import * as ReactDOM from "react-dom"
+import { useRouter } from "next/navigation"
+import { Command } from "cmdk"
+import { useTheme } from "next-themes"
+import {
+  Search,
+  FileText,
+  ArrowRight,
+  CircleDashed,
+  Laptop,
+  Moon,
+  Sun,
+  CornerDownLeft
+} from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { docsConfig } from "@/config/docs"
+
+function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M12 0C5.373 0 0 5.372 0 12c0 5.303 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.388-1.333-1.757-1.333-1.757-1.089-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.834 2.807 1.305 3.493.998.108-.776.418-1.305.762-1.605-2.666-.304-5.467-1.333-5.467-5.93 0-1.312.469-2.382 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.009-.323 3.301 1.23A11.52 11.52 0 0 1 12 5.8c1.02.005 2.047.139 3.006.404 2.291-1.553 3.298-1.23 3.298-1.23.652 1.653.241 2.874.117 3.176.769.839 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.48 5.921.431.371.824 1.103.824 2.222v3.293c0 .319.192.688.802.576C20.566 21.795 24 17.298 24 12 24 5.372 18.627 0 12 0Z" />
+    </svg>
+  )
+}
+
+function XIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.585-6.638 7.585H.474l8.6-9.83L0 1.153h7.594l5.243 6.932L18.901 1.153Zm-1.291 19.491h2.039L6.486 3.24H4.298L17.61 20.644Z" />
+    </svg>
+  )
+}
+
+// Pre-compute nav groups at module level
+const navGroups = docsConfig.nav
+
+const mainPages = [
+  {
+    title: "Home",
+    href: "/",
+    icon: ArrowRight
+  },
+  {
+    title: "Documentation",
+    href: "/docs",
+    icon: ArrowRight
+  }
+]
+
+const socialPages = [
+  {
+    title: "GitHub",
+    href: "https://github.com/harshjdhv/obvia",
+    icon: GitHubIcon
+  },
+  {
+    title: "X",
+    href: "https://x.com/harshjdhv",
+    icon: XIcon
+  }
+]
+
+// Memoized Pages group
+const PagesGroup = React.memo(function PagesGroup({
+  items,
+  onSelect
+}: {
+  items: typeof mainPages
+  onSelect: (href: string) => void
+}) {
+  return (
+    <Command.Group
+      heading="Pages"
+      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-muted-foreground/60"
+    >
+      {items.map((page) => (
+        <React.Fragment key={page.href}>
+          <SearchItem
+            title={page.title}
+            icon={<page.icon className="h-4 w-4" />}
+            onSelect={() => onSelect(page.href)}
+          />
+        </React.Fragment>
+      ))}
+    </Command.Group>
+  )
+})
+
+// Memoized Socials group
+const SocialsGroup = React.memo(function SocialsGroup({
+  items,
+  onSelect
+}: {
+  items: typeof socialPages
+  onSelect: (href: string) => void
+}) {
+  return (
+    <Command.Group
+      heading="Socials"
+      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-muted-foreground/60"
+    >
+      {items.map((page) => (
+        <React.Fragment key={page.href}>
+          <SearchItem
+            title={page.title}
+            icon={<page.icon className="h-4 w-4" />}
+            onSelect={() => onSelect(page.href)}
+          />
+        </React.Fragment>
+      ))}
+    </Command.Group>
+  )
+})
+
+// Memoized Settings group
+const SettingsGroup = React.memo(function SettingsGroup({
+  setTheme,
+  setOpen
+}: {
+  setTheme: (theme: string) => void
+  setOpen: (open: boolean) => void
+}) {
+  return (
+    <Command.Group
+      heading="Settings"
+      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-muted-foreground/60"
+    >
+      <SearchItem
+        title="Light"
+        icon={<Sun className="h-4 w-4" />}
+        onSelect={() => {
+          setTheme("light")
+          setOpen(false)
+        }}
+      />
+      <SearchItem
+        title="Dark"
+        icon={<Moon className="h-4 w-4" />}
+        onSelect={() => {
+          setTheme("dark")
+          setOpen(false)
+        }}
+      />
+      <SearchItem
+        title="System"
+        icon={<Laptop className="h-4 w-4" />}
+        onSelect={() => {
+          setTheme("system")
+          setOpen(false)
+        }}
+      />
+    </Command.Group>
+  )
+})
+
+const SearchItem = React.memo(function SearchItem({
+  title,
+  subtitle,
+  icon,
+  rightContent,
+  onSelect
+}: {
+  title: string
+  subtitle?: string
+  icon: React.ReactNode
+  rightContent?: React.ReactNode
+  onSelect: () => void
+}) {
+  return (
+    <Command.Item
+      value={`${subtitle ?? ""} ${title}`}
+      onSelect={onSelect}
+      className="group/item relative flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5 text-[13px] outline-none data-[selected=true]:bg-black/5 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-accent-foreground data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50"
+    >
+      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded text-muted-foreground/70 group-data-[selected=true]/item:text-primary">
+        {icon}
+      </div>
+      <div className="flex flex-1 flex-col gap-0.5">
+        <span className="font-medium truncate">{title}</span>
+        {subtitle && <span className="text-xs text-muted-foreground/60 truncate">{subtitle}</span>}
+      </div>
+      {rightContent}
+      {!rightContent && (
+        <ArrowRight
+          className="h-4 w-4 text-muted-foreground opacity-0 -translate-x-1 transition-all duration-200 ease-out group-data-[selected=true]/item:opacity-100 group-data-[selected=true]/item:translate-x-0"
+        />
+      )}
+    </Command.Item>
+  )
+
+}, (prev, next) => prev.title === next.title && prev.subtitle === next.subtitle && prev.rightContent === next.rightContent)
+
+
+// Memoized search group
+const SearchGroup = React.memo(function SearchGroup({
+  title,
+  items,
+  onSelect
+}: {
+  title: string
+  items: readonly { title: string; href: string }[]
+  onSelect: (href: string) => void
+}) {
+  const isGettingStarted = title === "Getting Started"
+
+  return (
+    <Command.Group
+      heading={title}
+      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-muted-foreground/60"
+    >
+      {items.map((navItem) => (
+        <React.Fragment key={navItem.href}>
+          <SearchItem
+            title={navItem.title}
+            icon={isGettingStarted ? <FileText className="h-4 w-4" /> : <CircleDashed className="h-4 w-4" />}
+            onSelect={() => onSelect(navItem.href)}
+          />
+        </React.Fragment>
+      ))}
+    </Command.Group>
+  )
+}, (prev, next) => prev.title === next.title)
+
+export function CommandMenu({ trigger }: { trigger?: React.ReactNode }) {
+  const router = useRouter()
+  const { setTheme } = useTheme()
+  const [open, setOpen] = React.useState(false)
+  const [query, setQuery] = React.useState("")
+  const inputRef = React.useRef<HTMLInputElement>(null)
+  const [mounted, setMounted] = React.useState(false)
+
+  // Mount check
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Keyboard shortcut handler
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setOpen((open) => !open)
+      }
+      if (e.key === "Escape") {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+  }, [])
+
+  // Focus input when opening
+  React.useEffect(() => {
+    if (open) {
+      // Use requestAnimationFrame for better timing
+      requestAnimationFrame(() => {
+        inputRef.current?.focus()
+      })
+    } else {
+      setQuery("")
+    }
+  }, [open])
+
+  // Stable navigation handler
+  const handleSelect = React.useCallback((href: string) => {
+    setOpen(false)
+    if (href.startsWith("http")) {
+      window.open(href, "_blank")
+    } else {
+      router.push(href)
+    }
+  }, [router])
+
+  // Stable close handler
+  const handleClose = React.useCallback(() => setOpen(false), [])
+
+  // Clear query handler
+  const handleClearQuery = React.useCallback(() => setQuery(""), [])
+
+  // Open llms.txt handler
+  const handleOpenLlms = React.useCallback(() => {
+    setOpen(false)
+    window.open("/llms.txt", "_blank")
+  }, [])
+
+  return (
+    <>
+      {trigger ? (
+        <div onClick={() => setOpen(true)}>{trigger}</div>
+      ) : (
+        <button
+          onClick={() => setOpen(true)}
+          className="group inline-flex items-center justify-center md:justify-start gap-2 whitespace-nowrap transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 border-0 md:border md:border-input/50 md:hover:border-input hover:bg-accent/50 md:px-3 md:py-2 relative h-9 w-9 md:w-40 lg:w-56 rounded-md md:rounded-lg bg-transparent md:bg-muted/30 text-sm font-normal text-muted-foreground"
+        >
+          <Search className="h-[1.2rem] w-[1.2rem] md:h-4 md:w-4 opacity-70 group-hover:opacity-100 md:opacity-50 md:group-hover:opacity-70 transition-opacity" />
+          <span className="hidden lg:inline-flex">Search...</span>
+          <span className="hidden md:inline-flex lg:hidden">Search</span>
+          <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-6 select-none items-center gap-0.5 rounded-md border bg-background/80 px-1.5 font-mono text-[10px] font-medium text-muted-foreground/70 sm:flex">
+            <span className="text-xs">⌘</span>K
+          </kbd>
+        </button>
+      )}
+
+      {mounted && ReactDOM.createPortal(
+        <AnimatePresence mode="sync">
+          {open && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm"
+                onClick={handleClose}
+              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+                transition={{
+                  duration: 0.25,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+                className="fixed left-1/2 top-1/2 z-[101] w-full max-w-[680px] -translate-x-1/2 -translate-y-1/2 p-4"
+              >
+                <Command
+                  label="Spotlight Search"
+                  className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 bg-[#F5F4F3] dark:bg-[#121212] backdrop-blur-xl [box-shadow:0_0_0_1px_rgba(255,255,255,0.8)_inset,0_0_24px_4px_rgba(255,255,255,0.09)_inset,0_24px_64px_-12px_rgba(0,0,0,0.12),0_8px_24px_-4px_rgba(0,0,0,0.08)] dark:[box-shadow:0_0_0_1px_rgba(255,255,255,0.06)_inset,0_0_24px_4px_rgba(255,255,255,0.02)_inset,0_24px_64px_-12px_rgba(0,0,0,0.6),0_8px_24px_-4px_rgba(0,0,0,0.4)] tracking-tight"
+                  shouldFilter={true}
+                >
+                  {/* Top sheen */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white dark:via-white/20 to-transparent" />
+
+                  <div className="p-2">
+                    <div className="flex items-center gap-2 rounded-xl border border-zinc-200/80 dark:border-zinc-700/40 bg-zinc-100/70 dark:bg-zinc-800/50 px-3 py-2.5 [box-shadow:inset_0_1px_2px_rgba(0,0,0,0.04)] dark:[box-shadow:inset_0_1px_2px_rgba(0,0,0,0.2)]">
+                      <Search className="h-4 w-4 text-muted-foreground/50" />
+                      <Command.Input
+                        ref={inputRef}
+                        value={query}
+                        onValueChange={setQuery}
+                        placeholder="Search Anything"
+                        className="flex-1 bg-transparent text-sm font-normal outline-none placeholder:text-muted-foreground/60"
+                        autoFocus
+                      />
+                      {query && (
+                        <button
+                          onClick={handleClearQuery}
+                          className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 transition-colors"
+                        >
+                          Clear
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  <Command.List className="max-h-[400px] overflow-y-auto overscroll-contain p-2 scrollbar-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [mask-image:linear-gradient(to_bottom,transparent,black_2rem,black_calc(100%-2rem),transparent)]">
+                    <Command.Empty className="flex flex-col items-center justify-center py-14 text-center">
+                      <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-muted/50">
+                        <Search className="h-5 w-5 text-muted-foreground/50" />
+                      </div>
+                      <p className="text-sm text-muted-foreground">No results found</p>
+                      <p className="text-xs text-muted-foreground/60">Try searching for something else</p>
+                    </Command.Empty>
+
+                    <PagesGroup items={mainPages} onSelect={handleSelect} />
+
+                    <SocialsGroup items={socialPages} onSelect={handleSelect} />
+
+                    {navGroups.map((group) => (
+                      <SearchGroup
+                        key={group.title}
+                        title={group.title}
+                        items={group.items}
+                        onSelect={handleSelect}
+                      />
+                    ))}
+
+                    <SettingsGroup setTheme={setTheme} setOpen={setOpen} />
+
+                    <Command.Group
+                      heading="Resources"
+                      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-muted-foreground/60"
+                    >
+                      <SearchItem
+                        title="llms.txt"
+                        subtitle="AI Context"
+                        icon={<FileText className="h-4 w-4" />}
+                        onSelect={handleOpenLlms}
+                      />
+                    </Command.Group>
+                  </Command.List>
+
+                  <div className="flex items-center justify-between border-t border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-50/60 dark:bg-zinc-900/40 px-4 py-2.5">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <kbd className="flex h-5 w-5 items-center justify-center rounded border bg-background font-mono text-[10px] text-muted-foreground shadow-sm">
+                        <CornerDownLeft className="h-3 w-3" />
+                      </kbd>
+                      <span>Go To Page</span>
+                    </div>
+                    <span className="text-xs text-muted-foreground/40">Obvia</span>
+                  </div>
+                </Command>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+    </>
+  )
+}

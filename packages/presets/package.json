@@ -1,24 +1,24 @@
 {
-  "name"              : "@pooxlabs/presets",
-  "description"       : "A centralized configuration layer for the Poox ecosystem—defining shared typescript, eslint, and tooling presets to enforce consistency, reduce setup overhead, and accelerate contributor onboarding. Designed for modularity, semantic clarity, and teardown-safe development across diverse project environments.",
-  "keywords"          : ["typescript", "eslint", "eslint-config", "eslint-preset", "code-style", "linting", "type-safe", "shared-config", "modular", "teardown-safe", "semantic", "onboarding-friendly", "developer-experience", "poox"],
+  "name"              : "@obvia/presets",
+  "description"       : "",
+  "keywords"          : ["typescript","eslint","eslint-config","eslint-preset","code-style","linting","type-safe","shared-config","modular","teardown-safe","semantic","onboarding-friendly","developer-experience","obvia"],
   "license"           : "MIT",
-  "homepage"          : "https://poox.io/",
+  "homepage"          : "https://obvia.studio",
   "version"           : "0.0.1",
 
   "author"            : {
     "name"      : "Selçuk Çukur",
-    "email"     : "selcukcukur@outlook.com.tr",
-    "url"       : "https://selcukcukur.com.tr"
+    "email"     : "hello@selcukcukur.me",
+    "url"       : "https://selcukcukur.me"
   },
 
   "bugs"              : {
-    "email"   : "security@poox.io",
-    "url"     : "https://github.com/pooxlabs/poox/issues"
+    "email"   : "hello@selcukcukur.me",
+    "url"     : "https://github.com/selcukcukur/obvia/issues"
   },
 
   "scripts"           : {
-    "clean" : "rimraf node_modules dist .turbo"
+    "clean"             : "rimraf node_modules dist .turbo"
   },
 
   "main"              : "./dist/index.mjs",
@@ -26,17 +26,17 @@
   "types"             : "./dist/index.d.ts",
 
   "devDependencies"   : {
-    "@eslint/js"                : "^10.0.1",
-    "@next/eslint-plugin-next"  : "^16.1.6",
-    "eslint"                    : "^10.0.0",
-    "eslint-config-prettier"    : "^10.1.8",
+    "@eslint/js"                : "^9.39.1",
+    "@next/eslint-plugin-next"  : "^16.2.0",
+    "eslint"                    : "^10.1.0",
+    "eslint-config-prettier"    : "^10.1.1",
     "eslint-plugin-only-warn"   : "^1.1.0",
     "eslint-plugin-react"       : "^7.37.5",
-    "eslint-plugin-react-hooks" : "^7.0.1",
-    "eslint-plugin-turbo"       : "^2.8.3",
-    "globals"                   : "^17.3.0",
+    "eslint-plugin-react-hooks" : "^5.2.0",
+    "eslint-plugin-turbo"       : "^2.7.1",
+    "globals"                   : "^16.5.0",
     "typescript"                : "^5.9.3",
-    "typescript-eslint"         : "^8.54.0"
+    "typescript-eslint"         : "^8.50.0"
   },
 
   "exports"           : {
@@ -53,11 +53,11 @@
   },
   "publisher"         : {
     "type" : "github",
-    "user" : "pooxlabs",
-    "repo" : "poox"
+    "user" : "selcukcukur",
+    "repo" : "obvia"
   },
   "repository"        : {
     "type"  : "git",
-    "url"   : "git+https://github.com/pooxlabs/poox.git"
+    "url"   : "git+https://github.com/selcukcukur/obvia.git"
   }
 }

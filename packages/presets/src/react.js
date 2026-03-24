@@ -7,7 +7,7 @@ import globals from "globals"
 import { config as baseConfig } from "./base.js"
 
 /**
- * Shared ESLint configuration for React-based libraries and applications.
+ * Shared eslint configuration for react-based libraries and applications
  *
  * @type {import("eslint").Linter.Config[]}
  */

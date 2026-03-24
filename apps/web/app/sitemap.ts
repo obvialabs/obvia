@@ -1,19 +1,46 @@
-import type { MetadataRoute } from "next"
+import { MetadataRoute } from "next";
+import { components } from "@/registry";
 
-import { headers } from "next/headers"
+const baseUrl = "https://www.obvia.fun";
 
-/**
- * Produces a static sitemap entry for the current domain
- */
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Read incoming request headers (Next.js server context)
-  const headersList = await headers()
+export default function sitemap(): MetadataRoute.Sitemap {
+  const currentDate = new Date();
 
-  // Extract the "host" header from the request (e.g. "poox.io")
-  let domain = headersList.get('host') as string
+  const staticPages: MetadataRoute.Sitemap = [
+    {
+      url: baseUrl,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/docs`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/changelog`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/llms.txt`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+  ];
 
-  // Default sitemap entry → root domain only
-  return [
-    { url: `https://${domain}`,  lastModified: new Date() }
-  ]
+  const componentSitemap: MetadataRoute.Sitemap = Object.keys(components).map(
+    (slug) => ({
+      url: `${baseUrl}/docs/components/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }),
+  );
+
+  return [...staticPages, ...componentSitemap];
 }

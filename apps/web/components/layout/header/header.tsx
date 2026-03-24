@@ -1,0 +1,69 @@
+import React from "react"
+import Link from "next/link"
+
+import { CommandMenu } from "@/components/command-menu"
+
+import { GithubToggle } from "@/components/layout/toggle/github-toggle"
+import { LayoutToggle } from "@/components/layout/toggle/layout-toggle"
+import { ThemeToggle } from "@/components/layout/toggle/theme-toggle"
+import {Button} from "@workspace/ui/components/button";
+
+import { ObviaLogo } from "@/components/branding/logo"
+import {Navigation, NavigationContent, NavigationItem, NavigationList, NavigationLink, NavigationTrigger} from "@workspace/ui/components/navigation/navigation";
+import Image from "next/image";
+import {ProductsContent} from "@workspace/ui/components/navigation/content/products-content";
+
+
+interface SiteHeaderProps {
+    sidebarToggle?: React.ReactNode
+}
+
+export function Header({ sidebarToggle }: SiteHeaderProps) {
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-[#111]/60 border-b border-border/40">
+      <div className="flex items-center h-12 px-4 sm:px-6 lg:px-8 max-w-[95rem] mx-auto w-full">
+        <div className="flex flex-1 items-center">
+          {sidebarToggle && (
+            <div className="md:hidden">
+              {sidebarToggle}
+            </div>
+          )}
+
+          <Button asChild size="sm" variant="ghost" className="h-8 shadow-none">
+            <Link href="/" className="flex items-center">
+              <ObviaLogo className="size-5" />
+            </Link>
+          </Button>
+
+          <Navigation>
+            <NavigationList>
+              <NavigationItem>
+                <NavigationTrigger className="text-xs text-foreground/60 transition-colors hover:text-foreground bg-transparent h-8 shadow-none">
+                  Ecosystem
+                </NavigationTrigger>
+
+                <ProductsContent />
+              </NavigationItem>
+            </NavigationList>
+          </Navigation>
+
+
+        </div>
+
+        <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+          <CommandMenu/>
+
+          <div className="flex items-center gap-1 sm:gap-2 border-l border-border/40 pl-2 sm:pl-4">
+            <GithubToggle/>
+
+            <div className="hidden sm:block">
+              <LayoutToggle/>
+            </div>
+
+            <ThemeToggle/>
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}

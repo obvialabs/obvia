@@ -4,7 +4,7 @@
     "declaration"               : true,
     "declarationMap"            : true,
     "esModuleInterop"           : true,
-    "incremental"               : false,
+    "incremental"               : true,
     "isolatedModules"           : true,
     "lib"                       : ["ES2022", "DOM", "DOM.Iterable"],
     "module"                    : "NodeNext",
@@ -13,9 +13,9 @@
     "noUncheckedIndexedAccess"  : true,
     "resolveJsonModule"         : true,
     "skipLibCheck"              : true,
-    "strict"                    : false,
+    "strict"                    : true,
     "target"                    : "ES2022"
   },
   "include"         : ["."],
-  "exclude"         : ["dist", "build", "node_modules/**/dist", "node_modules/**/build"]
+  "exclude"         : ["dist", "build", "node_modules"]
 }

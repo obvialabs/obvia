@@ -8,7 +8,7 @@ import pluginNext from "@next/eslint-plugin-next"
 import { config as baseConfig } from "./base.js"
 
 /**
- * ESLint configuration for all Next.js applications in the ecosystem.
+ * Eslint configuration for all next.js applications in the ecosystem
  *
  * @type {import("eslint").Linter.Config[]}
  */
