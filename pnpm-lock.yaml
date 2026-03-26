@@ -44,6 +44,9 @@ importers:
       '@fortawesome/react-fontawesome':
         specifier: ^3.2.0
         version: 3.2.0(@fortawesome/fontawesome-svg-core@7.2.0)(react@19.2.4)
+      '@obvia/fonts':
+        specifier: ^1.3.0
+        version: 1.3.0(next@16.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       '@react-three/drei':
         specifier: ^10.7.7
         version: 10.7.7(@react-three/fiber@9.5.0(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(three@0.182.0))(@types/react@19.2.14)(@types/three@0.182.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(three@0.182.0)
@@ -217,6 +220,9 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
     devDependencies:
+      '@obvia/fonts':
+        specifier: ^0.0.6
+        version: 0.0.6(next@16.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       '@obvia/presets':
         specifier: workspace:*
         version: link:../presets
@@ -628,6 +634,16 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@obvia/fonts@0.0.6':
+    resolution: {integrity: sha512-sm5m20qtol+JS7yp/+JapG9R8vYyBiZ9u4cIIYNlauF4RjkJ2HtadRjMoze49AEWyTQx3/Ix+I4Zh3T+We5bqA==}
+    peerDependencies:
+      next: ^16.2.1
+
+  '@obvia/fonts@1.3.0':
+    resolution: {integrity: sha512-8JnuC9wAouCzk6m4/CkfVeUaEf/v2WxmeuXm/8pXWOoQQoCxhDA9CSTbVo8KATq6+tmpJAdxI38R29o6tyHF6Q==}
+    peerDependencies:
+      next: ^16.2.1
 
   '@radix-ui/number@1.1.1':
     resolution: {integrity: sha512-MkKCwxlXTgz6CFoJx3pCwn07GKp36+aZyu/u2Ln2VrA5DcdyCZkASEDBTd8x5whTQQL5CiYf4prXKLcgQdv29g==}
@@ -4339,6 +4355,14 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
+
+  '@obvia/fonts@0.0.6(next@16.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
+    dependencies:
+      next: 16.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+
+  '@obvia/fonts@1.3.0(next@16.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
+    dependencies:
+      next: 16.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
   '@radix-ui/number@1.1.1': {}
 

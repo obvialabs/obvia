@@ -1,28 +1,20 @@
 import type React from "react"
-import type { Metadata } from "next"
 
-export const metadata: Metadata = {
-  title: "Components Documentation",
-  description: "Browse the complete collection of Obvia UI components. Free, open-source React components with copy-paste code, Tailwind CSS styling, and Framer Motion animations by Harsh Jadhav.",
-  openGraph: {
-    title: "UI Components Documentation | Obvia by Harsh Jadhav",
-    description: "Browse all React UI components. Copy-paste ready code with Tailwind CSS and Framer Motion.",
-  },
-  alternates: {
-    canonical: "https://obvia.fun/docs",
-  },
-}
+import { Header } from "@/components/layout/header/header"
 
-export default function DocsLayout({
+export default function BlocksLayout({
   children,
 }: {
   children: React.ReactNode
 }): React.JSX.Element {
   return (
-    <div data-route-docs className="min-h-svh flex flex-col bg-background">
+    <div className="relative min-h-screen w-full bg-white dark:bg-[#111] text-foreground transition-colors duration-300 selection:bg-zinc-200 dark:selection:bg-zinc-800">
       <div className="flex-1 flex overflow-hidden">
         {/* Main content - Full screen split view handled by pages */}
         <main className="flex-1 w-full h-full">
+          <Header />
+
+
           {children}
         </main>
       </div>

@@ -9,8 +9,14 @@ import { ThemeToggle } from "@/components/layout/toggle/theme-toggle"
 import {Button} from "@workspace/ui/components/button";
 
 import { ObviaLogo } from "@/components/branding/logo"
-import {Navigation, NavigationContent, NavigationItem, NavigationList, NavigationLink, NavigationTrigger} from "@workspace/ui/components/navigation/navigation";
-import Image from "next/image";
+import {
+  Navigation,
+  NavigationItem,
+  NavigationList,
+  NavigationLink,
+  NavigationTrigger
+} from "@workspace/ui/components/navigation/navigation"
+
 import {ProductsContent} from "@workspace/ui/components/navigation/content/products-content";
 
 
@@ -20,7 +26,7 @@ interface SiteHeaderProps {
 
 export function Header({ sidebarToggle }: SiteHeaderProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-[#111]/60 border-b border-border/40">
+    <header className="z-50 sticky left-0 top-0 w-full transition-all duration-300 ease-out bg-white dark:bg-[#111] py-3">
       <div className="flex items-center h-12 px-4 sm:px-6 lg:px-8 max-w-[95rem] mx-auto w-full">
         <div className="flex flex-1 items-center">
           {sidebarToggle && (
@@ -35,7 +41,7 @@ export function Header({ sidebarToggle }: SiteHeaderProps) {
             </Link>
           </Button>
 
-          <Navigation>
+          <Navigation className="hidden md:flex">
             <NavigationList>
               <NavigationItem>
                 <NavigationTrigger className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 py-0 px-2.5 cursor-pointer">
