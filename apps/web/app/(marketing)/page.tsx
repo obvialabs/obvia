@@ -3,7 +3,6 @@
 import { PreviewBackground } from "@/components/branding/preview"
 import { ObviaWordmark } from "@/components/branding/wordmark"
 import { motion } from "framer-motion"
-import { useState, useRef } from "react"
 import { ObviaLogo } from "@/components/branding/logo"
 
 export default function PreviewPage() {
