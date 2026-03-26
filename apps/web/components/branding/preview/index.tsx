@@ -67,15 +67,20 @@ void main() {
   float mask = smoothstep(0.8, 0.0, uv.y);
   mask = pow(mask, 1.2);
 
-  // Colors
-  vec3 c1 = vec3(0.02, 0.02, 0.05);  // Deep
-  vec3 c2 = vec3(0.1, 0.2, 0.5);     // Mid
-  vec3 c3 = vec3(0.6, 0.85, 0.95);   // High
+// Custom palette for brand (mat siyah tonları)
+vec3 c1 = vec3(0.05, 0.05, 0.05);   // koyu siyah (#0d0d0d)
+vec3 c2 = vec3(0.12, 0.12, 0.12);   // biraz daha açık siyah (#1f1f1f)
+vec3 c3 = vec3(0.18, 0.18, 0.18);   // gri-siyah (#2e2e2e)
+vec3 c4 = vec3(0.25, 0.25, 0.25);   // mat gri (#404040)
+
+
 
   float intensity = n3 * 1.2 + (n2 - 0.5) * 0.5;
 
-  vec3 col = mix(c1, c2, smoothstep(0.2, 0.6, intensity));
-  col = mix(col, c3, smoothstep(0.7, 1.1, intensity));
+vec3 col = mix(c1, c2, smoothstep(0.2, 0.6, intensity));
+col = mix(col, c3, smoothstep(0.6, 0.9, intensity));
+col = mix(col, c4, smoothstep(0.8, 1.1, intensity));
+
 
   // Apply mask
   col *= mask;
