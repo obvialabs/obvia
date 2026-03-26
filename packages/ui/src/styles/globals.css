@@ -8,8 +8,12 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --o-background-100-value: 0, 0%, 4%;
+  --o-background-200-value: 0, 0%, 0%;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -44,6 +48,9 @@
 }
 
 .dark {
+  --o-background-100-value: 0, 0%, 100%;
+  --o-background-200-value: 0, 0%, 98%;
+
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
@@ -79,11 +86,16 @@
 }
 
 @theme inline {
+
+  --o-background-100: hsla(var(--o-background-100-value), 1);
+  --o-background-200: hsla(var(--o-background-200-value), 1);
+
   --font-sans: var(--font-obvia-sans);
   --font-mono: var(--font-obvia-mono);
 
-  --color-background: var(--background);
+  --color-background: hsla(var(--o-background-100-value), 1);
   --color-foreground: var(--foreground);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);

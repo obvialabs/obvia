@@ -26,7 +26,7 @@ export default function RootLayout({
 }>): React.JSX.Element {
   return (
     <html lang="en" suppressHydrationWarning>
-    <body className={`${obviaSans.variable} ${obviaMono.variable} font-sans antialiased`}>
+    <body className={`${obviaSans.variable} ${obviaMono.variable} font-sans antialiased o-background-200`}>
     <Providers>{children}</Providers>
     </body>
     </html>
