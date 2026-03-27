@@ -6,7 +6,6 @@ import {
   obviaMono
 } from "@obvia/fonts"
 
-import "@workspace/ui/globals.css"
 import { Providers } from "@interface/providers"
 
 export const viewport: Viewport = {
