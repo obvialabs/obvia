@@ -59,8 +59,8 @@ body:
         Python: 3.11
         Tool: ttfautohint 1.7.4
         Obvia Version: 1.2.3
-      validations:
-        required: true
+   validations:
+     required: true
   # Description
   - type: textarea
     id: description
