@@ -1,0 +1,85 @@
+{
+  "name"              : "@obvia/utility",
+  "description"       : "Foundational utilities and constants that empower clarity and developer experience.",
+  "keywords"          : ["utility", "utilities", "helpers", "constants", "functions", "type-safe", "modular", "lightweight", "shared", "semantic", "obvia"],
+  "license"           : "MIT",
+  "homepage"          : "https://obvia.studio/",
+  "version"           : "0.0.1",
+
+  "author"            : {
+    "name"  : "Selçuk Çukur",
+    "email" : "hello@selcukcukur.me",
+    "url"   : "https://selcukcukur.me"
+  },
+
+  "bugs"              : {
+    "email" : "security@obvia.studio",
+    "url"   : "https://github.com/obvialabs/obvia/issues"
+  },
+
+  "scripts"           : {
+    "clean"     : "rimraf node_modules dist .turbo"
+  },
+
+  "main"              : "./dist/index.mjs",
+  "module"            : "./dist/index.mjs",
+  "types"             : "./dist/index.d.ts",
+
+  "dependencies"      : {
+    "class-variance-authority"  : "^0.7.1",
+    "clsx"                      : "^2.1.1",
+    "tailwind-merge"            : "^3.5.0"
+  },
+  "devDependencies"   : {
+    "@obvia/presets"            : "^0.0.2",
+    "@types/node"               : "catalog:type",
+    "@types/react"              : "catalog:type",
+    "typescript"                : "catalog:base"
+  },
+  "peerDependencies"  : {
+    "react"                     : "^19",
+    "react-dom"                 : "^19",
+    "next"                      : "^16",
+    "vue"                       : "^3",
+    "nuxt"                      : "^4"
+  },
+  "peerDependenciesMeta": {
+    "react"                     : {
+      "optional"  : true
+    },
+    "react-dom"                 : {
+      "optional"  : true
+    },
+    "next"                      : {
+      "optional"  : true
+    },
+    "vue"                       : {
+      "optional"  : true
+    },
+    "nuxt"                      : {
+      "optional"  : true
+    }
+  },
+
+  "exports"           : {
+    "."         : "./src/core/index.ts",
+    "./vue"     : "./src/vue/index.ts",
+    "./react"   : "./src/react/index.ts",
+    "./next"    : "./src/next/index.ts",
+    "./nuxt"    : "./src/nuxt/index.ts"
+  },
+
+  "publishConfig"     : {
+    "access"  : "public"
+  },
+  "publisher"         : {
+    "type" : "github",
+    "user" : "obvialabs",
+    "repo" : "obvia"
+  },
+  "repository"        : {
+    "type"      : "git",
+    "url"       : "git+https://github.com/obvialabs/obvia.git",
+    "directory" : "packages/utility"
+  }
+}
