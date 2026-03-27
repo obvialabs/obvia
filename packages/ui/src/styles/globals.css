@@ -97,7 +97,7 @@
   --font-sans: var(--font-obvia-sans);
   --font-mono: var(--font-obvia-mono);
 
-  --color-background: var(--o-background-100);
+  --color-background: var(--obvia-background);
   --color-foreground: var(--foreground);
 
   --color-card: var(--card);
