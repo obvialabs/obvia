@@ -1,10 +1,11 @@
 "use client"
 
-import { PreviewBackground } from "@/components/branding/preview"
-import { ObviaWordmark } from "@/components/branding/wordmark"
+import { PreviewBackground } from "@interface/branding/preview"
+import { ObviaWordmark } from "@interface/branding/wordmark"
 import { motion } from "framer-motion"
-import { ObviaLogo } from "@/components/branding/logo"
-import {ThemeToggle} from "@/components/layout/toggle/theme-toggle";
+
+import { ObviaLogo } from "@interface/branding/logo"
+import {ThemeToggle} from "@interface/layout/toggle/theme-toggle"
 
 export default function PreviewPage() {
   const containerVariants = {
