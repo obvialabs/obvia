@@ -1,5 +1,4 @@
 import type React from "react"
-import type {  Viewport } from "next"
 
 import {
   obviaSans,
@@ -7,16 +6,6 @@ import {
 } from "@obvia/fonts"
 
 import { Providers } from "@interface/providers"
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
-}
 
 export default function RootLayout({
   children,
