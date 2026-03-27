@@ -1,27 +1,22 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next"
 
-export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://www.obvia.fun";
+import { headers } from "next/headers"
+
+/**
+ * Dynamically builds crawl rules and sitemap URL based on current domain
+ */
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  // Get request headers to determine the current host/domain
+  const headersList = await headers()
+
+  // Extract the current request's host header as a string (e.g. "obvia.studio")
+  const domain = headersList.get('host') as string
 
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/preview/"],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/api/", "/_next/"],
-      },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
-        disallow: ["/api/", "/_next/"],
-      },
-    ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
-  };
+    // Allow all user agents (search engine bots) to crawl the entire site
+    rules   : [{  userAgent: "*", allow: "/" }],
+
+    // Dynamically set sitemap URL based on current domain
+    sitemap : `https://${domain}/sitemap.xml`,
+  }
 }
