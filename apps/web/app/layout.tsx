@@ -7,7 +7,7 @@ import {
 } from "@obvia/fonts"
 
 import "@workspace/ui/globals.css"
-import { Providers } from "@/components/providers"
+import { Providers } from "@interface/providers"
 
 export const viewport: Viewport = {
   width: "device-width",
