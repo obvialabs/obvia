@@ -4,6 +4,7 @@ import { PreviewBackground } from "@/components/branding/preview"
 import { ObviaWordmark } from "@/components/branding/wordmark"
 import { motion } from "framer-motion"
 import { ObviaLogo } from "@/components/branding/logo"
+import {ThemeToggle} from "@/components/layout/toggle/theme-toggle";
 
 export default function PreviewPage() {
   const containerVariants = {
@@ -26,9 +27,15 @@ export default function PreviewPage() {
 
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#111] text-zinc-100 selection:bg-white/20">
+    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#00b773] dark:bg-[#111] text-zinc-100 selection:bg-white/20">
+
       {/* Background */}
       <div className="absolute inset-0 z-0">
+        {/* Mode Switcher */}
+        <div className="absolute top-4 right-10 z-50">
+          <ThemeToggle />
+        </div>
+
         <PreviewBackground
           delayMs={0}
           className="absolute inset-0 z-10 block h-full w-full opacity-90"
@@ -44,6 +51,7 @@ export default function PreviewPage() {
         initial="hidden"
         animate="show"
       >
+
         {/* Badge */}
         <motion.div
           className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-md mb-6"
