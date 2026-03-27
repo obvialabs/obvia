@@ -45,7 +45,7 @@ export function Header({ sidebarToggle }: SiteHeaderProps) {
             <NavigationList>
               <NavigationItem>
                 <NavigationTrigger className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 py-0 px-2.5 cursor-pointer">
-                  Products
+                  Primitives
                 </NavigationTrigger>
 
                 <ProductsContent />
@@ -53,22 +53,22 @@ export function Header({ sidebarToggle }: SiteHeaderProps) {
 
               <NavigationItem>
                 <NavigationTrigger className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 py-0 px-2.5 cursor-pointer">
-                  Resources
+                  Components
                 </NavigationTrigger>
 
                 <ProductsContent />
               </NavigationItem>
 
               <NavigationLink className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 cursor-pointer px-2.5">
-                Enterprise
+                Blocks
               </NavigationLink>
 
               <NavigationLink className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 cursor-pointer px-2.5">
-                Customers
+                Charts
               </NavigationLink>
 
               <NavigationLink className="text-xs text-foreground/60 transition-colors hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 bg-transparent hover:bg h-8 cursor-pointer px-2.5">
-                Pricing
+                Templates
               </NavigationLink>
             </NavigationList>
           </Navigation>

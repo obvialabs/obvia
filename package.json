@@ -30,7 +30,7 @@
   },
 
   "devDependencies"   : {
-    "@obvia/presets"          : "workspace:*",
+    "@obvia/presets"          : "^0.0.2",
     "playwright"              : "^1.57.0",
     "prettier"                : "^3.7.4",
     "turbo"                   : "^2.8.20",

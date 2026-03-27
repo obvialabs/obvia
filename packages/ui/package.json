@@ -35,7 +35,7 @@
     "@types/opentype.js": "^1.3.9",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@obvia/presets": "workspace:*",
+    "@obvia/presets": "^0.0.2",
     "eslint": "^9.32.0",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2"
