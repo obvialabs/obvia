@@ -63,7 +63,7 @@ export default function PreviewPage() {
             <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-400"></span>
           </span>
           <span className="text-sm font-light tracking-wide text-gray-200">
-            Coming in Q4 2027 — stay tuned for the full experience
+            Coming in Q4 2026 — stay tuned for the full experience
           </span>
         </motion.div>
 
