@@ -1,0 +1,76 @@
+# Issue template name
+name: "Feature Request"
+
+# Issue template description
+description: "Suggest new features or improvements to help us enhance the Obvia ecosystem"
+
+# Issue template title prefix
+title: "obvia(*): "
+
+# Labels automatically applied to this issue
+labels: ["enhancement"]
+
+# Issue template type
+type: "feature"
+
+# Default assignees for this issue
+assignees: ["selcukcukur"]
+
+# Issue Template
+body:
+  # Title
+  - type: markdown
+    attributes:
+      value: "Please begin your title with obvia(product): followed by a short, clear description (e.g. obvia(console): add dark mode support)"
+
+  # Product
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product
+      description: "Please select the Obvia product that this request is related to"
+      options:
+        - Obvia Studio
+        - Obvia Console
+        - Obvia Desktop
+        - Obvia Interface
+        - Obvia Typeface
+        - Obvia Registry
+    validations:
+      required: true
+
+  # Motivation
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: "Explain why this feature would be useful and what problem it solves"
+      placeholder: "This feature would improve accessibility for users with..."
+    validations:
+      required: true
+
+  # Proposed Solution
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: "Describe how you would like this feature to work"
+      placeholder: "Add a toggle in settings to enable dark mode..."
+    validations:
+      required: true
+
+  # Alternatives
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives
+      description: "List any alternative solutions or workarounds you have considered"
+      placeholder: "Using browser extensions for dark mode..."
+
+  # Additional Context
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: "Add any other context, references, or screenshots about the feature request"
+      placeholder: "Related issues, design mockups, links..."
