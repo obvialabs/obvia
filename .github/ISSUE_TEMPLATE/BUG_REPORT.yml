@@ -17,6 +17,7 @@ body:
   - type: markdown
     attributes:
       value: "Please begin your title with obvia(product): followed by a short, clear description (e.g. obvia(typeface): kerning issue in obvia sans)"
+
   # Product
   - type: dropdown
     id: product
@@ -32,6 +33,7 @@ body:
         - Obvia Registry
     validations:
       required: true
+
   # Checklist
   - type: checkboxes
     id: checklist
@@ -45,6 +47,7 @@ body:
         - label: "I have specified the product version and environment (e.g. browser, OS)"
         - label: "I have described both the expected and actual behavior"
         - label: "I have kept the title concise and in the required format (e.g. obvia(console): …)"
+
   # Environment
   - type: textarea
     id: environment
@@ -59,8 +62,9 @@ body:
         Python: 3.11
         Tool: ttfautohint 1.7.4
         Obvia Version: 1.2.3
-   validations:
-     required: true
+    validations:
+      required: true
+
   # Description
   - type: textarea
     id: description
@@ -70,6 +74,7 @@ body:
       placeholder: "Steps to reproduce, observed behavior, expected behavior..."
     validations:
       required: true
+
   # Behavior
   - type: textarea
     id: behavior
@@ -79,6 +84,7 @@ body:
       placeholder: "Font kerning breaks instead of aligning properly..."
     validations:
       required: true
+
   # Steps to Reproduce
   - type: textarea
     id: steps
@@ -98,6 +104,7 @@ body:
       label: Screenshots
       description: "Attach screenshots or proof images if available"
       placeholder: "Drag and drop images here"
+
   # Context
   - type: textarea
     id: additional
