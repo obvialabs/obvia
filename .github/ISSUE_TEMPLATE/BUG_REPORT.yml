@@ -45,8 +45,6 @@ body:
         - label: "I have specified the product version and environment (e.g. browser, OS)"
         - label: "I have described both the expected and actual behavior"
         - label: "I have kept the title concise and in the required format (e.g. obvia(console): …)"
-    validations:
-      required: true
   # Environment
   - type: textarea
     id: environment
