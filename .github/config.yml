@@ -1,1 +1,11 @@
+# Disable blank issue creation
 blank_issues_enabled: false
+
+# Security Report
+contact_links:
+  - name: "Security Report"
+    url: "https://obvia.studio/contact"
+    about: "Please report security vulnerabilities or concerns using our dedicated security channel."
+  - name: "Community Discussions"
+    url: "https://obvia.studio/"
+    about: "Join discussions, share ideas, and connect with other users."
