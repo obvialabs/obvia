@@ -1,0 +1,66 @@
+{
+  "private"           : true,
+  "name"              : "@obvia/translation",
+  "description"       : "Obvia translation presets and localization utilities for building scalable, type-safe, and framework-agnostic internationalization workflows.",
+  "keywords"          : [ "obvia", "translation", "i18n", "localization", "internationalization", "multi-language", "type-safe"],
+  "license"           : "MIT",
+  "homepage"          : "https://obvia.studio/",
+  "version"           : "0.0.1",
+
+  "author"            : {
+    "name"  : "Selçuk Çukur",
+    "email" : "hello@selcukcukur.me",
+    "url"   : "https://selcukcukur.me"
+  },
+
+  "bugs"              : {
+    "email" : "security@obvia.studio",
+    "url"   : "https://github.com/obvialabs/obvia/issues"
+  },
+
+  "scripts"           : {
+    "clean" : "rimraf node_modules dist .turbo"
+  },
+
+  "main"              : "./dist/index.mjs",
+  "module"            : "./dist/index.mjs",
+  "types"             : "./dist/index.d.ts",
+
+  "dependencies"      : {
+    "@obvia/utilities"              : "^0.0.4",
+    "next"                          : "catalog:base",
+    "react"                         : "catalog:base",
+    "next-intl"                     : "^4.8.3"
+  },
+  "devDependencies"   : {
+    "@obvia/presets"                : "^0.0.2",
+    "@types/node"                   : "catalog:type",
+    "@types/react"                  : "catalog:type",
+    "typescript"                    : "catalog:base"
+  },
+
+  "exports"           : {
+    "."             : "./src/index.ts",
+    "./server"      : "./src/server.ts",
+    "./navigation"  : "./src/translation/navigation.ts",
+    "./plugin"      : "./src/translation/plugin.ts",
+    "./proxy"       : "./src/translation/proxy.ts",
+    "./request"     : "./src/translation/request.ts",
+    "./routing"     : "./src/translation/routing.ts",
+    "./messages"    : "./src/messages/en.json"
+  },
+
+  "publishConfig"     : {
+    "access"    : "public"
+  },
+  "publisher"         : {
+    "type"      : "github",
+    "user"      : "obvialabs",
+    "repo"      : "obvia"
+  },
+  "repository"        : {
+    "type"      : "git",
+    "url"       : "git+https://github.com/obvialabs/obvia.git",
+    "directory" : "packages/translation"
+  }
+}

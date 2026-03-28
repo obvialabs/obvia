@@ -1,5 +1,7 @@
 import type { NextConfig } from "next"
 
+import { withTranslation } from "@obvia/translation/plugin"
+
 /**
  * The framework configuration object
  */
@@ -120,4 +122,4 @@ const nextConfig: NextConfig = {
 }
 
 // Export framework configurations
-export default nextConfig
+export default withTranslation(nextConfig)
