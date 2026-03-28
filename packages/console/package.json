@@ -1,0 +1,54 @@
+{
+  "name"              : "@obvia/console",
+  "description"       : "",
+  "keywords"          : [],
+  "license"           : "MIT",
+  "homepage"          : "https://obvia.studio/",
+  "version"           : "0.0.1",
+
+  "author"            : {
+    "name"  : "Selçuk Çukur",
+    "email" : "hello@selcukcukur.me",
+    "url"   : "https://selcukcukur.me"
+  },
+
+  "bugs"              : {
+    "email" : "security@obvia.studio",
+    "url"   : "https://github.com/obvialabs/obvia/issues"
+  },
+
+  "scripts"           : {
+    "clean"     : "rimraf node_modules dist .turbo"
+  },
+
+  "main"              : "./dist/index.mjs",
+  "module"            : "./dist/index.mjs",
+  "types"             : "./dist/index.d.ts",
+
+  "dependencies"      : {
+    "@obvia/utilities"              : "^0.0.4"
+  },
+  "devDependencies"   : {
+    "@types/node"                   : "^25.5.0",
+    "@types/pg"                     : "^8.18.0",
+    "typescript"                    : "^5.9.3"
+  },
+
+  "exports"           : {
+    "."             : "./src/index.ts"
+  },
+
+  "publishConfig"     : {
+    "access"    : "public"
+  },
+  "publisher"         : {
+    "type"      : "github",
+    "user"      : "obvialabs",
+    "repo"      : "obvia"
+  },
+  "repository"        : {
+    "type"      : "git",
+    "url"       : "git+https://github.com/obvialabs/obvia.git",
+    "directory" : "packages/console"
+  }
+}

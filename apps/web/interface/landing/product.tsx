@@ -29,7 +29,7 @@ export function ProductTrigger({
   return (
     <motion.a
       className={cn(
-        "group block w-full md:w-auto rounded-sm px-5 py-3 hover:bg-white/5 transition duration-500 ease-in-out text-center",
+        "group block w-full md:w-auto rounded-sm px-3 py-2 hover:bg-white/5 transition duration-500 ease-in-out text-center",
         className
       )}
       {...props}
@@ -46,7 +46,7 @@ export function Product({
     <ProductTrigger {...props}>
       <ProductLogo />
 
-      <span className={cn("text-lg tracking-wide transition duration-500 text-gray-50 group-hover:text-[#00b773]", className)}>
+      <span className={cn("text-[16px] tracking-wide transition duration-500 font-semibold text-gray-200 group-hover:text-gray-50 dark:group-hover:text-[#00b773]", className)}>
         {children}
       </span>
     </ProductTrigger>
