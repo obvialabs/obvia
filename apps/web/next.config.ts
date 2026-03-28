@@ -39,7 +39,8 @@ const nextConfig: NextConfig = {
    * This ensures compatibility for monorepo packages or dependencies that ship uncompiled code
    */
   transpilePackages         : [
-    "@obvia/fonts"
+    "@obvia/fonts",
+    "@obvia/utilities"
   ],
 
   /**
@@ -57,7 +58,9 @@ const nextConfig: NextConfig = {
    */
   experimental              : {
     // reduces bundle size by optimizing
-    optimizePackageImports: [],
+    optimizePackageImports: [
+      "@obvia/utilities"
+    ],
   },
 
   /**

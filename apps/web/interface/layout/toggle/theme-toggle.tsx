@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
-import { cn } from "@/lib/utils"
+import { cn } from "@obvia/utilities"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@workspace/ui/components/tooltip/tooltip"
 import { Keyboard } from "@workspace/ui/components/keyboard/keyboard"
 import { motion, AnimatePresence } from "framer-motion"

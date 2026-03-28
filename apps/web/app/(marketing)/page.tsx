@@ -5,7 +5,7 @@ import { ObviaWordmark } from "@interface/branding/wordmark"
 import { motion } from "framer-motion"
 
 import { ObviaLogo } from "@interface/branding/logo"
-import {ThemeToggle} from "@interface/layout/toggle/theme-toggle"
+import { ThemeToggle } from "@interface/layout/toggle/theme-toggle"
 
 export default function PreviewPage() {
   const containerVariants = {
