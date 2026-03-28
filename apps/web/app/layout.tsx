@@ -5,6 +5,8 @@ import {
   obviaMono
 } from "@obvia/fonts"
 
+import "@obvia/interface/obvia.css"
+
 import { Providers } from "@interface/providers"
 
 export default function RootLayout({

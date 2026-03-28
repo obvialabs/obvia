@@ -2,10 +2,12 @@
 
 import { PreviewBackground } from "@interface/branding/preview"
 import { ObviaWordmark } from "@interface/branding/wordmark"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 
 import { ObviaLogo } from "@interface/branding/logo"
 import { ThemeToggle } from "@interface/layout/toggle/theme-toggle"
+
+import { Product, Products } from "@interface/landing/product"
 
 export default function PreviewPage() {
   const containerVariants = {
@@ -84,72 +86,13 @@ export default function PreviewPage() {
           A next‑gen design system with end‑to‑end capabilities — interface, console, fonts, icons and studio — built for clarity, scalability, and elegance.
         </motion.p>
 
-        {/* Menu with highlight */}
-        <motion.div
-          className="relative z-30 grid grid-cols-2 md:grid-cols-5 items-stretch justify-center gap-4 px-6 text-center"
-          variants={fadeUp}
-        >
-          <motion.a
-            href="#"
-            className="group block w-full md:w-auto rounded-sm px-5 py-3 hover:bg-white/5 transition duration-500 ease-in-out text-center"
-            variants={fadeUp}
-            whileTap={hoverGrow.tap}
-          >
-            <ObviaLogo className="grayscale group-hover:grayscale-0 size-7 mr-2 inline-block transition duration-500" />
-            <span className="text-lg tracking-wide text-gray-50 group-hover:text-[#00b773] transition duration-500">
-      Studio
-    </span>
-          </motion.a>
-
-          <motion.a
-            href="#"
-            className="group block w-full md:w-auto rounded-sm px-5 py-3 hover:bg-white/5 transition duration-500 ease-in-out text-center"
-            variants={fadeUp}
-            whileTap={hoverGrow.tap}
-          >
-            <ObviaLogo className="grayscale group-hover:grayscale-0 size-7 mr-2 inline-block transition duration-500" />
-            <span className="text-lg tracking-wide text-gray-50 group-hover:text-[#00b773] transition duration-500">
-      Console
-    </span>
-          </motion.a>
-
-          <motion.a
-            href="#"
-            className="group relative block w-full md:w-auto rounded-sm px-5 py-3 hover:bg-white/5 transition duration-500 ease-in-out text-center"
-            variants={fadeUp}
-            whileTap={hoverGrow.tap}
-          >
-            <ObviaLogo className="grayscale group-hover:grayscale-0 size-7 mr-2 inline-block transition duration-500" />
-            <span className="text-lg tracking-wide text-gray-50 group-hover:text-[#00b773] transition duration-500">
-      Interface
-    </span>
-          </motion.a>
-
-          <motion.a
-            href="#"
-            className="group relative block w-full md:w-auto rounded-sm px-5 py-3 hover:bg-white/5 transition duration-500 ease-in-out text-center"
-            variants={fadeUp}
-            whileTap={hoverGrow.tap}
-          >
-            <ObviaLogo className="group-hover:grayscale size-7 mr-2 inline-block transition duration-500" />
-            <span className="text-lg tracking-wide text-gray-50 transition duration-500">
-      Typeface
-    </span>
-          </motion.a>
-
-          <motion.a
-            href="#"
-            className="group relative block w-full md:w-auto rounded-sm px-5 py-3 hover:bg-white/5 transition duration-500 ease-in-out text-center"
-            variants={fadeUp}
-            whileTap={hoverGrow.tap}
-          >
-            <ObviaLogo className="grayscale group-hover:grayscale-0 size-7 mr-2 inline-block transition duration-500" />
-            <span className="text-lg tracking-wide text-gray-50 group-hover:text-[#00b773] transition duration-500">
-      Registry
-    </span>
-          </motion.a>
-        </motion.div>
-
+        <Products variants={fadeUp}>
+          <Product href="#" variants={fadeUp} whileTap={hoverGrow.tap}>Studio</Product>
+          <Product href="#" variants={fadeUp} whileTap={hoverGrow.tap}>Console</Product>
+          <Product href="#" variants={fadeUp} whileTap={hoverGrow.tap}>Interface</Product>
+          <Product href="#" variants={fadeUp} whileTap={hoverGrow.tap}>Typeface</Product>
+          <Product href="#" variants={fadeUp} whileTap={hoverGrow.tap}>Registry</Product>
+        </Products>
       </motion.div>
     </div>
   )

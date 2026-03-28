@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
-import {TooltipProvider} from "@workspace/ui/components/tooltip/tooltip";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -13,9 +12,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       disableTransitionOnChange
       enableColorScheme
     >
-      <TooltipProvider>
         {children}
-      </TooltipProvider>
     </NextThemesProvider>
   )
 }
