@@ -14,7 +14,7 @@
 * Tailwind (Sources)
 * ---------------------------------------------------------------------------- */
 @source "../../../apps/**/*/*.{ts,tsx}";      /* Application Components */
-@source "../../../**/*.{ts,tsx}";             /* Monorepo Components */
+@source "../../../packages/**/*/*.{ts,tsx}";  /* Monorepo Components */
 @source "../**/*.{ts,tsx}";                   /* Interface Components */
 
 /* ------------------------------------------------------------------------------
