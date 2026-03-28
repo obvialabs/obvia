@@ -10,6 +10,13 @@ catalogs:
     react: ^19.2.4
     react-dom: ^19.2.4
     typescript: ^5.9.3
+  db:
+    prisma: ^7.6.0
+    '@prisma/client': ^7.6.0
+    '@prisma/config': ^7.6.0
+    '@prisma/adapter-pg': ^7.6.0
+    '@prisma/extension-accelerate': ^3.0.1
+    '@prisma/client-runtime-utils': ^7.6.0
   type:
     '@types/node': ^25.5.0
     '@types/react': ^19.2.14
@@ -18,12 +25,11 @@ catalogs:
 # Define dependencies that must always be built from source
 onlyBuiltDependencies:
   - '@parcel/watcher'     # File system watcher used by Parcel bundler
+  - '@prisma/client'      # Prisma client library for database access
+  - '@prisma/engines'     # Prisma query engines required for runtime
   - '@swc/core'           # SWC compiler core (used for fast JS/TS compilation)
-  - '@tsparticles/engine' # Engine for particle animations (tsparticles)
   - esbuild               # Fast JavaScript bundler and minifier
-  - less                  # CSS preprocessor (Less)
-  - msw                   # Mock Service Worker for API testing
-  - protobufjs            # Protocol Buffers implementation in JavaScript
+  - prisma                # Prisma ORM main package
   - sharp                 # High-performance image processing library
   - workerd               # Worker runtime (used by Cloudflare Workers)
 
