@@ -1,5 +1,5 @@
 {
-  "name"              : "@obvia/console",
+  "name"              : "obvia",
   "description"       : "",
   "keywords"          : [],
   "license"           : "MIT",
@@ -48,7 +48,6 @@
   },
   "repository"        : {
     "type"      : "git",
-    "url"       : "git+https://github.com/obvialabs/obvia.git",
-    "directory" : "packages/console"
+    "url"       : "git+https://github.com/obvialabs/obvia.git"
   }
 }
