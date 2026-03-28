@@ -1,0 +1,4 @@
+Contact: mailto:security@obvia.studio
+Expires: 2034-10-21T23:22:00.000Z
+Preferred-Languages: en
+Canonical: https://obvia.studio/.well-known/security.txt
