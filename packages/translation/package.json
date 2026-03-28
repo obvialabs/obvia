@@ -30,8 +30,7 @@
     "@obvia/utilities"              : "^0.0.4",
     "next"                          : "catalog:base",
     "react"                         : "catalog:base",
-    "next-intl"                     : "^4.8.3",
-    "@formatjs/intl-localematcher"  : "^0.8.2"
+    "next-intl"                     : "^4.8.3"
   },
   "devDependencies"   : {
     "@obvia/presets"                : "^0.0.2",
