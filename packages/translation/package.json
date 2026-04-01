@@ -2,7 +2,7 @@
   "private"           : true,
   "name"              : "@obvia/translation",
   "description"       : "Obvia translation presets and localization utilities for building scalable, type-safe, and framework-agnostic internationalization workflows.",
-  "keywords"          : [ "obvia", "translation", "i18n", "localization", "internationalization", "multi-language", "type-safe"],
+  "keywords"          : ["obvia", "translation", "i18n", "localization", "internationalization", "multi-language", "type-safe"],
   "license"           : "MIT",
   "homepage"          : "https://obvia.studio/",
   "version"           : "0.0.1",
@@ -27,7 +27,7 @@
   "types"             : "./dist/index.d.ts",
 
   "dependencies"      : {
-    "@obvia/utilities"              : "^0.0.4",
+    "@obvia/utilities"              : "^0.0.12",
     "next"                          : "catalog:base",
     "react"                         : "catalog:base",
     "next-intl"                     : "^4.8.3"
