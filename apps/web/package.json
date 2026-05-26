@@ -20,11 +20,11 @@
 
   "scripts"           : {
     "build"             : "next build",
-    "clean"             : "bunx rimraf node_modules dist .next .turbo",
+    "clean"             : "rimraf node_modules dist .next .turbo",
     "dev"               : "next dev --hostname obvia.dev --experimental-https --experimental-https-key ./certificate/obvia-key.pem --experimental-https-cert ./certificate/obvia.pem --turbopack --port 443",
     "lint"              : "next lint",
-    "start"             : "next server",
-    "test"              : "bunx vitest -no-file-parallelism --bail=1"
+    "start"             : "next start",
+    "test"              : "bun test --bail --no-file-parallelism"
   },
 
   "dependencies"      : {
