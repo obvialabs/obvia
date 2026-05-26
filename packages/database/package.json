@@ -19,12 +19,12 @@
   },
 
   "scripts"           : {
-    "clean"     : "rimraf node_modules dist .turbo",
-    "generate"  : "npx prisma generate",
-    "push"      : "npx prisma db push",
-    "studio"    : "npx prisma studio",
-    "format"    : "npx prisma format",
-    "sync"      : "npx prisma generate && npx prisma db push"
+    "clean"     : "bunx rimraf node_modules dist .turbo",
+    "generate"  : "bunx prisma generate",
+    "push"      : "bunx prisma db push",
+    "studio"    : "bunx prisma studio",
+    "format"    : "bunx prisma format",
+    "sync"      : "bunx prisma generate && bunx prisma db push"
   },
 
   "main"              : "./dist/index.mjs",
@@ -43,7 +43,7 @@
     "@types/node"                   : "catalog:type",
     "@types/pg"                     : "^8.18.0",
     "prisma"                        : "catalog:db",
-    "typescript"                    : "catalog:base"
+    "typescript"                    : "catalog:core"
   },
 
   "exports"           : {

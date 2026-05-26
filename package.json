@@ -1,24 +1,24 @@
 {
-  "private"           : true,
-  "name"              : "obvia-monorepo",
-  "description"       : "A next‑gen design system with end‑to‑end capabilities — interface, console, fonts, icons and studio — built for clarity, scalability, and elegance.",
-  "keywords"          : ["registry","ui","desktop","vuejs","nuxt","nextjs","react","typescript","fonts","icons","console","studio","interface","obvia"],
-  "license"           : "MIT",
-  "homepage"          : "https://obvia.studio/",
-  "version"           : "0.0.1",
+  "private"             : true,
+  "name"                : "@obvia/monorepo",
+  "description"         : "A next‑gen design system with end‑to‑end capabilities — interface, console, fonts, icons and studio — built for clarity, scalability, and elegance.",
+  "keywords"            : ["registry","ui","desktop","vuejs","nuxt","nextjs","react","typescript","fonts","icons","console","studio","interface","obvia"],
+  "license"             : "MIT",
+  "homepage"            : "https://obvia.studio/",
+  "version"             : "0.0.1",
 
-  "author"            : {
+  "author"              : {
     "name"  : "Selçuk Çukur",
     "email" : "hello@selcukcukur.me",
     "url"   : "https://selcukcukur.me"
   },
 
-  "bugs"              : {
+  "bugs"                : {
     "email" : "security@obvia.studio",
     "url"   : "https://github.com/obvialabs/obvia/issues"
   },
 
-  "scripts"           : {
+  "scripts"             : {
     "build"         : "turbo build",
     "start"         : "turbo start",
     "dev"           : "turbo dev",
@@ -27,15 +27,74 @@
     "test"          : "turbo test"
   },
 
-  "devDependencies"   : {
+  "devDependencies"     : {
     "@obvia/presets"          : "^0.0.2",
     "prettier"                : "^3.8.1",
     "turbo"                   : "^2.8.20",
-    "typescript"              : "catalog:type"
+    "typescript"              : "catalog:core"
   },
+  "trustedDependencies" : [
+    "@parcel/watcher",
+    "@prisma/client",
+    "@prisma/engines",
+    "@swc/core",
+    "esbuild",
+    "prisma",
+    "sharp",
+    "workerd"
+  ],
 
-  "packageManager"    : "pnpm@10.33.0",
-  "engines"           : {
-    "node"  : ">=24"
-  }
+  "workspaces"          : {
+    "packages"    : ["apps/*", "packages/*"],
+    "catalogs"    : {
+      "core"        : {
+        "typescript"                    : "^6",
+        "react"                         : "^19",
+        "react-dom"                     : "^19",
+        "next"                          : "^16"
+      },
+      "type"        : {
+        "@types/node"                   : "^25",
+        "@types/react"                  : "^19",
+        "@types/react-dom"              : "^19"
+      },
+      "dev"         : {
+        "@tailwindcss/vite"             : "^4",
+        "@tailwindcss/postcss"          : "^4",
+        "@tailwindcss/forms"            : "^0",
+        "@tailwindcss/typography"       : "^0",
+        "@vitejs/plugin-react"          : "^4",
+        "autoprefixer"                  : "^10",
+        "vite"                          : "^7",
+        "postcss"                       : "^8",
+        "tailwindcss"                   : "^4"
+      },
+      "db"          : {
+        "prisma"                        : "^7",
+        "@prisma/client"                : "^7",
+        "@prisma/config"                : "^7",
+        "@prisma/adapter-pg"            : "^7",
+        "@prisma/extension-accelerate"  : "^3",
+        "@prisma/client-runtime-utils"  : "^7"
+      },
+      "self"        : {
+        "@obvia/fonts"                  : "latest",
+        "@obvia/presets"                : "latest",
+        "@obvia/utilities"              : "latest"
+      }
+    }
+  },
+  "overrides"           : {
+    "@types/node"         : "catalog:type",
+    "@types/react"        : "catalog:type",
+    "@types/react-dom"    : "catalog:type",
+    "eslint"              : "^10",
+    "next"                : "catalog:core",
+    "react"               : "catalog:core",
+    "react-dom"           : "catalog:core"
+  },
+  "engines"             : {
+    "node"                : ">=24"
+  },
+  "packageManager": "bun@1.3.14"
 }
