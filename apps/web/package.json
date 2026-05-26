@@ -20,7 +20,6 @@
 
   "scripts"           : {
     "build"             : "next build",
-    "clean"             : "rimraf node_modules dist .next .turbo",
     "dev"               : "next dev --hostname obvia.dev --experimental-https --experimental-https-key ./certificate/obvia-key.pem --experimental-https-cert ./certificate/obvia.pem --turbopack --port 443",
     "lint"              : "next lint",
     "start"             : "next start",

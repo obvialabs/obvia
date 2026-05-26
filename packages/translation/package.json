@@ -19,7 +19,7 @@
   },
 
   "scripts"           : {
-    "clean" : "bunx rimraf node_modules dist .turbo"
+    "test"              : "bun test --bail --no-file-parallelism"
   },
 
   "main"              : "./dist/index.mjs",
