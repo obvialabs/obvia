@@ -19,7 +19,7 @@
   },
 
   "scripts"           : {
-    "clean" : "rimraf node_modules dist .turbo"
+    "test"              : "bun test --bail --no-file-parallelism"
   },
 
   "main"              : "./dist/index.mjs",
@@ -28,15 +28,15 @@
 
   "dependencies"      : {
     "@obvia/utilities"              : "^0.0.4",
-    "next"                          : "catalog:base",
-    "react"                         : "catalog:base",
+    "next"                          : "catalog:core",
+    "react"                         : "catalog:core",
     "next-intl"                     : "^4.8.3"
   },
   "devDependencies"   : {
     "@obvia/presets"                : "^0.0.2",
     "@types/node"                   : "catalog:type",
     "@types/react"                  : "catalog:type",
-    "typescript"                    : "catalog:base"
+    "typescript"                    : "catalog:core"
   },
 
   "exports"           : {
